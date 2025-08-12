@@ -59,7 +59,7 @@ const Hero = () => {
             VIT<span className="text-cyber">KULT</span>
           </h1>
           <h2 className="text-2xl md:text-3xl font-semibold text-muted-foreground mb-4">
-            VIT Bhopal's Technology Community
+            Where Art, Culture & Tech Collide
           </h2>
           <div className="h-16 mb-6">
             <p 
