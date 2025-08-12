@@ -1,0 +1,13 @@
+{
+  "name": "VITKult - Premier Technical Club | VIT Bhopal University",
+  "short_name": "VITKult",
+  "description": "  technical community at VIT Bhopal. Join coding events, hackathons, and tech workshops.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "categories": ["education", "technology", "student-organization"],
+  "lang": "en",
+  "dir": "ltr"
+}

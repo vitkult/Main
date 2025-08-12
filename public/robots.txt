@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://vitkult.vitbhopal.ac.in/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin
+Disallow: /api/
+
+# Allow important pages
+Allow: /about
+Allow: /events
+Allow: /team
+Allow: /hackathon
+Allow: /sponsor
+
+# Crawl delay for better performance
+Crawl-delay: 1

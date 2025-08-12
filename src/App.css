@@ -1,0 +1,171 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #6366f1aa); /* indigo */
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #a5b4fcaa); /* light indigo */
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #a1a1aa; /* muted-foreground gray */
+}
+
+/* Language switch animations */
+@keyframes language-switch {
+  0%, 50% { 
+    content: "ವಿಟ್ಕಲ್ಟ್"; /* VITKULT in Kannada */
+  }
+  50.1%, 100% { 
+    content: "VITKULT"; /* English */
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.language-loop::after {
+  content: "ವಿಟ್ಕಲ್ಟ್";
+  animation: language-switch 2s infinite;
+}
+
+/* Smooth text transition classes */
+.text-transition {
+  display: inline-block;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text-fade-enter {
+  opacity: 0;
+  transform: translateY(15px) scale(0.95);
+}
+
+.text-fade-enter-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 800ms ease-out, transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.text-fade-exit {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.text-fade-exit-active {
+  opacity: 0;
+  transform: translateY(-15px) scale(0.95);
+  transition: opacity 800ms ease-in, transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Gradient text effects */
+.text-gradient-primary {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-secondary {
+  background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-success {
+  background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--success)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-electric {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 10px hsl(var(--primary) / 0.3));
+}
+
+.text-gradient-cyber {
+  background: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--accent)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 10px hsl(var(--secondary) / 0.3));
+}
+
+.text-gradient-neon {
+  background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--success)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 10px hsl(var(--accent) / 0.3));
+}
+
+/* Enhanced gradient transition */
+.text-gradient-animated {
+  background: linear-gradient(45deg,
+    hsl(var(--primary)),
+    hsl(var(--secondary)),
+    hsl(var(--accent)),
+    hsl(var(--success)));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 8s ease infinite;
+  filter: drop-shadow(0 0 15px hsl(var(--primary) / 0.4));
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
