@@ -84,7 +84,9 @@ const About = () => {
               About <span className="text-cyber">VITKULT</span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed animate-fade-in" style={{ animationDelay: '100ms' }}>
-              We are VIT Bhopal's premier technical club, where innovation meets gaming culture. Born from a passion for technology and a love for community, we've grown into a powerhouse of creativity and technical excellence.
+              VITKULT is a unique student club that unites art, culture, and technology on one platform. It is a space for dancers, musicians, designers, coders, actors, and innovators to explore their creativity and skills. We celebrate tradition while embracing innovation. From electrifying performances and cultural events to cutting-edge tech projects and hackathons, we merge creativity with technology in exciting ways.
+              Our events include music and dance showcases, drama productions, workshops, TEDx talks, and social initiatives. We also work on AI-driven applications, website development, and interactive digital experiences.
+              At VITKULT, ideas turn into reality, and passion meets purpose. It is where talents shine, cultures unite, and technology creates new possibilities. VITKULT is more than a club—it’s a movement of creativity, innovation, and impact!
             </p>
           </div>
         </div>
