@@ -79,35 +79,59 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95vw] max-w-6xl z-50 bg-background/80 backdrop-blur-lg border border-primary/20 rounded-2xl shadow-2xl transition-all duration-500 animate-fade-in">
-      <div className="px-4 sm:px-8 py-2">
-        <div className="flex items-center justify-between h-12">
+      <div className="px-2 sm:px-4 lg:px-8 py-2">
+        <div className="flex items-center justify-between h-12 overflow-hidden">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group flex-shrink-0">
       <div className="relative">
-        <Zap className="h-8 w-8 text-primary group-hover:text-primary-glow transition-colors duration-300 animate-bounce-in" />
+        <img
+          src="/logo.PNG"
+          alt="VITKULT Logo"
+          className="h-8 w-8 object-contain group-hover:scale-110 transition-all duration-300 animate-bounce-in filter brightness-110 contrast-125 hue-rotate-15"
+          style={{
+            filter: 'brightness(1.2) contrast(1.3) saturate(1.4) hue-rotate(15deg)'
+          }}
+        />
         <div className="absolute inset-0 blur-md bg-primary/20 rounded-full animate-pulse"></div>
       </div>
-      <div className="relative h-8 w-32">
-        <span className={`absolute inset-0 text-2xl font-bold tracking-wide transition-all duration-1000 ease-in-out ${
+      <div className="relative h-8 w-32 sm:w-36">
+        <span className={`absolute inset-0 text-2xl font-extrabold tracking-wider transition-all duration-1000 ease-in-out ${
           showKannada
             ? "text-gradient-primary opacity-100 translate-y-0"
             : "text-gradient-secondary opacity-0 -translate-y-2"
-        }`}>
-          ವಿಟ್ಕಲ್ಟ್
+        }`} style={{
+          fontFamily: '"Rajdhani", "Orbitron", "Exo 2", sans-serif',
+          textShadow: '0 0 12px rgba(59, 130, 246, 0.5)',
+          letterSpacing: '0.05em',
+          color: '#e2e8f0'
+        }}>
+          ವಿಟ್<span className="text-primary font-black" style={{
+            textShadow: '0 0 15px rgba(59, 130, 246, 0.8), 0 0 25px rgba(59, 130, 246, 0.4)',
+            color: '#3b82f6'
+          }}>ಕ</span>ಲ್ಟ್
         </span>
-        <span className={`absolute inset-0 text-2xl font-bold tracking-wide transition-all duration-1000 ease-in-out ${
+        <span className={`absolute inset-0 text-2xl font-extrabold tracking-wider transition-all duration-1000 ease-in-out ${
           showKannada
             ? "text-gradient-secondary opacity-0 translate-y-2"
             : "text-gradient-primary opacity-100 translate-y-0"
-        }`}>
-          VITKULT
+        }`} style={{
+          fontFamily: '"Rajdhani", "Orbitron", "Exo 2", sans-serif',
+          textShadow: '0 0 12px rgba(59, 130, 246, 0.5)',
+          letterSpacing: '0.05em',
+          color: '#e2e8f0'
+        }}>
+          VIT<span className="text-primary font-black" style={{
+            textShadow: '0 0 15px rgba(59, 130, 246, 0.8), 0 0 25px rgba(59, 130, 246, 0.4)',
+            color: '#3b82f6',
+            fontSize: '1.1em'
+          }}>K</span>ULT
         </span>
       </div>
     </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center flex-1 justify-center">
-            <div className="flex items-baseline space-x-4">
+          <div className="hidden md:flex items-center flex-1 justify-center px-2">
+            <div className="flex items-baseline space-x-2 lg:space-x-4">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const active = isActive(item.path);

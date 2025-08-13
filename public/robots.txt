@@ -1,19 +1,40 @@
+# Robots.txt for VITKult - VIT Bhopal Technical Club
+# https://vitkultclub.in/
+
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://vitkult.vitbhopal.ac.in/sitemap.xml
+# Sitemap location
+Sitemap: https://vitkultclub.in/sitemap.xml
 
-# Disallow admin areas
-Disallow: /admin
-Disallow: /api/
+# Crawl-delay for better server performance
+Crawl-delay: 1
 
-# Allow important pages
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# Disallow admin areas (if any)
+Disallow: /admin/
+Disallow: /.env
+Disallow: /api/private/
+
+# Allow important pages for VIT Bhopal searches
 Allow: /about
 Allow: /events
-Allow: /team
 Allow: /hackathon
+Allow: /team
 Allow: /sponsor
-
-# Crawl delay for better performance
-Crawl-delay: 1
+Allow: /login

@@ -98,9 +98,9 @@
     scroll-behavior: smooth;
   }
 
-  /* Gaming cursor */
+  /* Normal cursor */
   * {
-    cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='8' fill='white' fill-opacity='0.7' stroke='%236366f1' stroke-width='3'/%3E%3Cfilter id='shadow' x='-20%' y='-20%' width='140%' height='140%'%3E%3CfeDropShadow dx='0' dy='2' stdDeviation='2' flood-color='%236366f1' flood-opacity='0.3'/%3E%3C/filter%3E%3C/svg%3E") 12 12, auto;
+    cursor: auto;
   }
 
   /* Selection styling */

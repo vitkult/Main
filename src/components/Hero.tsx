@@ -8,10 +8,11 @@ const Hero = () => {
   const [isTyping, setIsTyping] = useState(true);
 
   const texts = [
-    "Electrifying Tech Innovation",
-    "Gaming the Future",
-    "Code • Create • Conquer",
-    "VIT Bhopal's Tech Elite"
+    "VIT Bhopal's Premier Tech Club",
+    "VITB's Leading Student Organization",
+    "Vellore Institute of Technology Bhopal",
+    "Code • Create • Conquer at VITB",
+    "Best Technical Club VIT Bhopal"
   ];
 
   useEffect(() => {
@@ -55,9 +56,27 @@ const Hero = () => {
       <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
         {/* Main Heading with Glitch Effect */}
         <div className="mb-8">
-          <h1 className="text-6xl md:text-8xl mt-20 mb-10 font-bold text-electric leading-tight">
+          <h1 className="text-6xl md:text-8xl mt-32 mb-6 font-bold text-electric leading-tight">
             VIT<span className="text-cyber">KULT</span>
           </h1>
+          
+          {/* Full Form with Animated Highlight */}
+          <div className="mb-8 relative">
+            <div className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 border border-primary/20 backdrop-blur-sm">
+              <p className="text-lg md:text-xl font-medium text-primary/90 tracking-wide">
+                <span className="text-electric font-semibold">VIT</span>{" "}
+                <span className="text-cyber font-semibold">Karunadu</span>{" "}
+                <span className="text-neon font-semibold">Unnati</span>{" "}
+                <span className="text-muted-foreground">for</span>{" "}
+                <span className="text-electric font-semibold">Language</span>{" "}
+                <span className="text-muted-foreground">and</span>{" "}
+                <span className="text-cyber font-semibold">Technology</span>
+              </p>
+              {/* Animated underline */}
+              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent animate-pulse"></div>
+            </div>
+          </div>
+          
           <h2 className="text-2xl md:text-3xl font-semibold text-muted-foreground mb-4">
             Where Art, Culture & Tech Collide
           </h2>
@@ -74,9 +93,9 @@ const Hero = () => {
 
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-          Join VIT Bhopal's most electrifying technical club where 
-          <span className="text-primary font-semibold"> VIT Bhopal's innovation meets Bangalore technology culture</span>, 
-          and the future is coded by passionate minds from across India.
+          Join <span className="text-primary font-semibold">VIT Bhopal's premier technical club</span> where
+          <span className="text-primary font-semibold">Vellore Institute of Technology Bhopal's innovation meets Karnataka technology culture</span>.
+          The leading <span className="text-primary font-semibold">VITB student organization</span> for coding, hackathons, and tech excellence.
         </p>
 
         {/* CTA Buttons */}

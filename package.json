@@ -1,8 +1,30 @@
 {
-  "name": "vite_react_shadcn_ts",
-  "private": true,
-  "version": "0.0.0",
+  "name": "vitkult-vit-bhopal-technical-club",
+  "description": "VITKult - Premier Technical Club at VIT Bhopal University (Vellore Institute of Technology Bhopal). Official VITB student organization for coding, hackathons, and tech innovation.",
+  "version": "1.0.0",
   "type": "module",
+  "keywords": [
+    "VIT Bhopal",
+    "Vellore Institute of Technology Bhopal",
+    "VITB",
+    "VIT Bhopal clubs",
+    "technical club",
+    "student organization",
+    "coding club",
+    "hackathon",
+    "programming",
+    "VIT Bhopal student club",
+    "VITB technical club",
+    "Karnataka technology",
+    "VITKult"
+  ],
+  "homepage": "https://vitkultclub.in/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vitkult/vitkult-website"
+  },
+  "author": "VITKult Technical Club - VIT Bhopal University",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
