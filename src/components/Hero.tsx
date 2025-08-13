@@ -93,7 +93,7 @@ const Hero = () => {
 
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-          Join <span className="text-primary font-semibold">VIT Bhopal's premier technical club</span> where
+          Join <span className="text-primary font-semibold">VIT Bhopal's premier non-technical club</span> where
           <span className="text-primary font-semibold">Vellore Institute of Technology Bhopal's innovation meets Karnataka technology culture</span>.
           The leading <span className="text-primary font-semibold">VITB student organization</span> for coding, hackathons, and tech excellence.
         </p>
@@ -127,10 +127,10 @@ const Hero = () => {
         {/* Stats Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
           {[
-            { number: "500+", label: "Active Members", icon: Users, description: "VIT Bhopal students and tech enthusiasts" },
-            { number: "50+", label: "Projects Built", icon: Code, description: "AI, Web Dev & Innovation" },
-            { number: "25+", label: "Events Hosted", icon: Calendar, description: "Hackathons & Workshops" },
-            { number: "10+", label: "Awards Won", icon: Trophy, description: "National & Regional Recognition" }
+            { number: "100+", label: "Active Members", icon: Users, description: "VIT Bhopal students and tech enthusiasts" },
+            { number: "5+", label: "Projects Built", icon: Code, description: "AI, Web Dev & Innovation" },
+            { number: "1+", label: "Events Hosted", icon: Calendar, description: "Hackathons & Workshops" },
+            { number: "1+", label: "Awards Won", icon: Trophy, description: "National & Regional Recognition" }
           ].map((stat, index) => {
             const Icon = stat.icon;
             return (

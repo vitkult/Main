@@ -32,7 +32,7 @@ const Index = () => {
               About <span className="text-cyber">VITKULT</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed animate-fade-in">
-              VITKULT is VIT Bhopal's premier technical club where innovation meets gaming culture. We're a community of passionate developers, creative designers, and tech enthusiasts who believe in pushing boundaries and creating the future.
+              VITKULT is VIT Bhopal's premier non-technical club where innovation meets gaming culture. We're a community of passionate developers, creative designers, and tech enthusiasts who believe in pushing boundaries and creating the future.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 animate-fade-in">
@@ -204,7 +204,7 @@ const Index = () => {
             <span className="text-2xl font-bold text-electric animate-fade-in">VITKULT</span>
           </div>
           <p className="text-muted-foreground mb-6 animate-fade-in">
-            VIT Bhopal University's Premier Technical Club
+            VIT Bhopal University's Premier Non-Technical Club
           </p>
           <div className="flex justify-center space-x-6 mb-6">
             {[
