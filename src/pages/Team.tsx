@@ -290,7 +290,9 @@ const Team = () => {
               Our <span className="text-cyber">Team</span>
             </h1>
             <p className="text-xl text-muted-foreground animate-fade-in">
-              Meet the brilliant minds behind VITKULT - passionate innovators, creative thinkers, and gaming enthusiasts who make the magic happen!
+              Meet the team working on and behind the scenes at VITKULT.
+              Passionate minds, Creative thinkers and Cultural trailblazers who
+              turn dreams into reality!
             </p>
           </div>
         </div>
