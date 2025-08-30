@@ -139,17 +139,17 @@ const Navigation = () => {
                   <Link
                     key={item.name}
                     to={item.path}
-                    className={`relative px-3 py-2 rounded-md text-sm font-medium flex items-center space-x-2 group transition-all duration-300 ${
+                    className={`relative px-3 py-2 rounded-md text-sm font-medium flex items-center space-x-2 group transition-all duration-300 cursor-pointer ${
                       active
                         ? "text-primary"
                         : "text-muted-foreground hover:text-primary hover:bg-primary/5"
                     }`}
                   >
-                    <Icon className="h-4 w-4 group-hover:scale-125 transition-transform duration-300" />
-                    <span>{item.name}</span>
+                    <Icon className="h-4 w-4 group-hover:scale-125 transition-transform duration-300 cursor-pointer" />
+                    <span className="cursor-pointer">{item.name}</span>
                     {/* Animated underline */}
                     <span
-                      className={`absolute left-0 -bottom-1 h-0.5 w-full rounded bg-primary transition-all duration-300 ${
+                      className={`absolute left-0 -bottom-1 h-0.5 w-full rounded bg-primary transition-all duration-300 cursor-pointer ${
                         active ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"
                       }`}
                     ></span>

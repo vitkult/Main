@@ -1,32 +1,17 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Code, Cpu, Gamepad2, Zap, Bot, Rocket } from "lucide-react";
+import {
+  ArrowRight,
+  Code,
+  Cpu,
+  Gamepad2,
+  Zap,
+  Bot,
+  Rocket,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
-  const [currentText, setCurrentText] = useState(0);
-  const [isTyping, setIsTyping] = useState(true);
-
-  const texts = [
-    "VIT Bhopal's Premier Tech Club",
-    "VITB's Leading Student Organization",
-    "Vellore Institute of Technology Bhopal",
-    "Code • Create • Conquer at VITB",
-    "Best Technical Club VIT Bhopal"
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsTyping(false);
-      setTimeout(() => {
-        setCurrentText((prev) => (prev + 1) % texts.length);
-        setIsTyping(true);
-      }, 500);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   const floatingIcons = [
     { Icon: Code, delay: "0s", position: "top-20 left-10" },
     { Icon: Cpu, delay: "1s", position: "top-32 right-20" },
@@ -40,7 +25,7 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden particle-bg">
       {/* Animated Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,black_70%,transparent_110%)]"></div>
-      
+
       {/* Floating Icons */}
       {floatingIcons.map(({ Icon, delay, position }, index) => (
         <Icon
@@ -59,7 +44,7 @@ const Hero = () => {
           <h1 className="text-6xl md:text-8xl mt-32 mb-6 font-bold text-electric leading-tight">
             VIT<span className="text-cyber">KULT</span>
           </h1>
-          
+
           {/* Full Form with Animated Highlight */}
           <div className="mb-8 relative">
             <div className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 border border-primary/20 backdrop-blur-sm">
@@ -76,26 +61,18 @@ const Hero = () => {
               <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent animate-pulse"></div>
             </div>
           </div>
-          
+
           <h2 className="text-2xl md:text-3xl font-semibold text-muted-foreground mb-4">
             Where Art, Culture & Tech Collide
           </h2>
-          <div className="h-16 mb-6">
-            <p 
-              className={`text-2xl md:text-4xl font-semibold text-neon transition-all duration-500 ${
-                isTyping ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}
-            >
-              {texts[currentText]}
-            </p>
-          </div>
         </div>
 
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-          Join <span className="text-primary font-semibold">VIT Bhopal's premier non-technical club</span> where
-          <span className="text-primary font-semibold">Vellore Institute of Technology Bhopal's innovation meets Karnataka technology culture</span>.
-          The leading <span className="text-primary font-semibold">VITB student organization</span> for coding, hackathons, and tech excellence.
+          Step into VIT Bhopal's most dynamic club where innovation meets
+          India's tech capital mindset, creativity fuses with cutting-edge code
+          and the future is engineered by passionate minds from every corner of
+          India.
         </p>
 
         {/* CTA Buttons */}
@@ -111,9 +88,9 @@ const Hero = () => {
               Explore Events
             </Link>
           </Button>
-          <Button 
-            variant="outline" 
-            size="xl" 
+          <Button
+            variant="outline"
+            size="xl"
             className="group border-2 border-primary text-primary hover:bg-primary hover:text-white"
             asChild
           >
@@ -127,22 +104,48 @@ const Hero = () => {
         {/* Stats Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
           {[
-            { number: "100+", label: "Active Members", icon: Users, description: "VIT Bhopal students and tech enthusiasts" },
-            { number: "5+", label: "Projects Built", icon: Code, description: "AI, Web Dev & Innovation" },
-            { number: "1+", label: "Events Hosted", icon: Calendar, description: "Hackathons & Workshops" },
-            { number: "1+", label: "Awards Won", icon: Trophy, description: "National & Regional Recognition" }
+            {
+              number: "100+",
+              label: "Active Members",
+              icon: Users,
+              description: "VIT Bhopal students and tech enthusiasts",
+            },
+            {
+              number: "5+",
+              label: "Projects Built",
+              icon: Code,
+              description: "AI, Web Dev & Innovation",
+            },
+            {
+              number: "1+",
+              label: "Events Hosted",
+              icon: Calendar,
+              description: "Hackathons & Workshops",
+            },
+            {
+              number: "1+",
+              label: "Awards Won",
+              icon: Trophy,
+              description: "National & Regional Recognition",
+            },
           ].map((stat, index) => {
             const Icon = stat.icon;
             return (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="text-center group hover:scale-110 transition-transform duration-300 cursor-pointer"
               >
                 <div className="gaming-container p-6 mb-4">
                   <Icon className="h-8 w-8 text-primary mx-auto mb-3 group-hover:text-primary-glow transition-colors duration-300" />
-                  <div className="text-3xl font-bold text-electric mb-2">{stat.number}</div>
-                  <div className="text-muted-foreground text-sm font-semibold">{stat.label}</div>
-                  <div className="text-xs text-muted-foreground mt-1">{stat.description}</div>
+                  <div className="text-3xl font-bold text-electric mb-2">
+                    {stat.number}
+                  </div>
+                  <div className="text-muted-foreground text-sm font-semibold">
+                    {stat.label}
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-1">
+                    {stat.description}
+                  </div>
                 </div>
               </div>
             );
@@ -151,7 +154,6 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      
     </section>
   );
 };
