@@ -3,7 +3,12 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  font-family: 'Fira Code', monospace;
 }
+
+  body{
+    font-family: 'Fira Code', monospace;
+  }
 
 .logo {
   height: 6em;

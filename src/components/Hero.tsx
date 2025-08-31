@@ -8,25 +8,40 @@ import {
   Zap,
   Bot,
   Rocket,
+  Users,
+  Calendar,
+  Trophy,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+const floatingIcons = [
+  { Icon: Code, delay: "0s", position: "top-20 left-10" },
+  { Icon: Cpu, delay: "1s", position: "top-32 right-20" },
+  { Icon: Gamepad2, delay: "2s", position: "top-48 left-1/4" },
+  { Icon: Bot, delay: "0.5s", position: "top-64 right-1/3" },
+  { Icon: Rocket, delay: "1.5s", position: "top-80 left-2/3" },
+  { Icon: Zap, delay: "2.5s", position: "top-96 right-10" },
+];
 
 const Hero = () => {
-  const floatingIcons = [
-    { Icon: Code, delay: "0s", position: "top-20 left-10" },
-    { Icon: Cpu, delay: "1s", position: "top-32 right-20" },
-    { Icon: Gamepad2, delay: "2s", position: "top-48 left-1/4" },
-    { Icon: Bot, delay: "0.5s", position: "top-64 right-1/3" },
-    { Icon: Rocket, delay: "1.5s", position: "top-80 left-2/3" },
-    { Icon: Zap, delay: "2.5s", position: "top-96 right-10" },
-  ];
+  const [showCuteBot, setShowCuteBot] = useState(true);
+
+  useEffect(() => {
+    let isVisible = true;
+
+    const interval = setInterval(() => {
+      isVisible = !isVisible;
+      setShowCuteBot(isVisible);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden particle-bg">
-      {/* Animated Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,black_70%,transparent_110%)]"></div>
 
-      {/* Floating Icons */}
       {floatingIcons.map(({ Icon, delay, position }, index) => (
         <Icon
           key={index}
@@ -35,17 +50,68 @@ const Hero = () => {
         />
       ))}
 
-      {/* Particle Effect Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div>
 
-      <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
-        {/* Main Heading with Glitch Effect */}
-        <div className="mb-8">
-          <h1 className="text-6xl md:text-8xl mt-32 mb-6 font-bold text-electric leading-tight">
+      <motion.div
+        className="relative z-10 text-center max-w-5xl mx-auto px-4"
+        initial={{ y: "-100vh", rotate: -15 }}
+        animate={{
+          y: 0,
+          rotate: 0,
+          transition: {
+            type: "spring",
+            damping: 5,
+            stiffness: 40,
+            duration: 1.5,
+          },
+        }}
+        whileInView="visible"
+      >
+        <div className="mb-8 relative">
+          {showCuteBot && (
+            <motion.div
+              className="absolute z-50 top-10 left-10 flex flex-col items-center"
+              initial={{ x: 300, opacity: 0 }}
+              animate={{
+                x: 0,
+                opacity: 1,
+                transition: {
+                  type: "spring",
+                  damping: 10,
+                  stiffness: 100,
+                  duration: 0.5,
+                },
+              }}
+              exit={{
+                x: 300,
+                opacity: 0,
+                transition: {
+                  duration: 0.5,
+                  delay: 2,
+                },
+              }}
+            >
+              <motion.div
+                animate={{
+                  rotate: [0, 20, -20, 20, 0],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: 0,
+                  delay: 0.5,
+                }}
+              >
+                <Bot className="h-16 w-16 text-electric animate-bounce-subtle cursor-pointer" />
+              </motion.div>
+              <span className="text-sm text-electric font-semibold mt-2">
+                Hi!
+              </span>
+            </motion.div>
+          )}
+          <h1 className="text-6xl md:text-8xl mt-32 mb-20 font-bold text-electric leading-tight">
             VIT<span className="text-cyber">KULT</span>
           </h1>
 
-          {/* Full Form with Animated Highlight */}
           <div className="mb-8 relative">
             <div className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 border border-primary/20 backdrop-blur-sm">
               <p className="text-lg md:text-xl font-medium text-primary/90 tracking-wide">
@@ -57,7 +123,6 @@ const Hero = () => {
                 <span className="text-muted-foreground">and</span>{" "}
                 <span className="text-cyber font-semibold">Technology</span>
               </p>
-              {/* Animated underline */}
               <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent animate-pulse"></div>
             </div>
           </div>
@@ -67,8 +132,7 @@ const Hero = () => {
           </h2>
         </div>
 
-        {/* Subtitle */}
-        <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+        <p className=" text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
           Step into VIT Bhopal's most dynamic club where innovation meets
           India's tech capital mindset, creativity fuses with cutting-edge code
           and the future is engineered by passionate minds from every corner of
@@ -101,7 +165,6 @@ const Hero = () => {
           </Button>
         </div>
 
-        {/* Stats Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
           {[
             {
@@ -151,14 +214,9 @@ const Hero = () => {
             );
           })}
         </div>
-      </div>
-
-      {/* Scroll Indicator */}
+      </motion.div>
     </section>
   );
 };
-
-// Import icons that were referenced but not imported
-import { Users, Calendar, Trophy } from "lucide-react";
 
 export default Hero;
