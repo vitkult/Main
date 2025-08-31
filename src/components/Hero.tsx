@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import CandleAnimation from "./ui/CandleAnimation";
 
 const floatingIcons = [
   { Icon: Code, delay: "0s", position: "top-20 left-10" },
@@ -26,6 +27,7 @@ const floatingIcons = [
 
 const Hero = () => {
   const [showCuteBot, setShowCuteBot] = useState(true);
+  const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
     let isVisible = true;
@@ -39,7 +41,10 @@ const Hero = () => {
   }, []);
 
   const handleRedirect = () => {
-    window.location.href = "/pages/index.html";
+    setAnimating(true);
+    setTimeout(() => {
+      window.location.href = "/pages/index.html";
+    }, 3000);
   };
 
   return (
@@ -114,6 +119,13 @@ const Hero = () => {
               </span>
             </motion.div>
           )}
+
+          {animating && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black rounded-lg shadow-lg">
+          <CandleAnimation  />
+        </div>
+      )}
+
           <h1 className="text-6xl md:text-8xl mt-32 mb-20 font-bold text-electric leading-tight">
             VIT<span className="text-cyber">KULT</span>
           </h1>

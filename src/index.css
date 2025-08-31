@@ -450,3 +450,34 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+#flash-transition {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: white; /* The color of the flash */
+  z-index: 9999;
+  animation: fullPageFlash 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes fullPageFlash {
+  0% {
+    transform: translate(-50%, -50%) scale(0.1);
+    opacity: 1;
+    box-shadow: 0 0 50px 10px white; /* Initial glow */
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(30);
+    opacity: 1;
+    box-shadow: 0 0 100px 30px white, 0 0 200px 50px white; /* Intense glow */
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(200); /* Expands to cover the whole screen */
+    opacity: 0; /* Fades out at the end */
+    background-color: white; /* This will briefly make the whole screen white */
+  }
+}
