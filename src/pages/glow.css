@@ -1,0 +1,10 @@
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 6px rgba(96,165,250,0.4); }
+  50% { box-shadow: 0 0 12px rgba(96,165,250,0.8); }
+}
+
+.input-glow:focus {
+  outline: none;
+  border-color: #3b82f6;
+  animation: glow 1.6s infinite alternate;
+}
