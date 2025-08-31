@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VITKULT | Where Tech, Art and Culture Collide</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+      :root {
+        --clr-bg: #0a090f;
+        --clr-bg-alt: #1a1b2e;
+        --clr-border: rgba(115, 115, 115, 0.4);
+        --clr-text: #ffffff;
+        --clr-text-muted: #94a3b8;
+        --clr-accent-primary: #f2ff00;
+        --clr-accent-secondary: #ff7300;
+        --clr-accent-gradient: linear-gradient(to right, #f2ff00, #ff7300);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--clr-bg);
+        color: var(--clr-text);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Navigation */
+      .navbar {
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        border-bottom: 1px solid var(--clr-border);
+        backdrop-filter: blur(20px);
+        background: rgba(10, 9, 15, 0.95);
+        transition: var(--transition);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 64px;
+        padding: 0 2rem;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        text-decoration: none;
+        color: var(--clr-text);
+      }
+
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+        background: var(--clr-accent-gradient);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+        font-weight: 900;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        list-style: none;
+      }
+
+      .nav-link {
+        color: var(--clr-text);
+        text-decoration: none;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        transition: var(--transition);
+        position: relative;
+        border: 1px solid transparent;
+      }
+
+      .nav-link:hover {
+        background: rgba(242, 255, 0, 0.1);
+        color: var(--clr-accent-primary);
+        border-color: var(--clr-accent-primary);
+        transform: translateY(-2px);
+      }
+
+      .nav-link.active {
+        background: var(--clr-accent-gradient);
+        color: #000;
+        border-color: var(--clr-accent-primary);
+        font-weight: 600;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(242, 255, 0, 0.3);
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: end;
+        position: relative;
+        padding-bottom: 3rem;
+        overflow: hidden;
+      }
+
+      .hero-3d-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      .hero-canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 10;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+      }
+
+      .hero-left {
+        max-width: 400px;
+      }
+
+      .hero-tagline {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        letter-spacing: 0.05em;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease-out 0.3s forwards;
+        color: var(--clr-text);
+      }
+
+      .hero-title {
+        font-size: clamp(3rem, 8vw, 7rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        line-height: 0.9;
+        margin: 2rem 0;
+        position: relative;
+        opacity: 0;
+        transform: translateY(50px);
+        animation: fadeInUp 1s ease-out 0.6s forwards;
+        color: var(--clr-text);
+      }
+
+      .hero-accent-line {
+        position: absolute;
+        top: 2.5rem;
+        right: -2rem;
+        width: 300px;
+        height: 2px;
+        background: var(--clr-text);
+        transform: scaleX(0);
+        animation: scaleIn 1s ease-out 1.2s forwards;
+      }
+
+      .hero-decorative-lines {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+
+      .hero-decorative-lines::before,
+      .hero-decorative-lines::after {
+        content: "";
+        position: absolute;
+        background: var(--clr-accent-gradient);
+      }
+
+      .hero-decorative-lines::before {
+        width: 60%;
+        height: 4px;
+        bottom: 0;
+        transform: scaleX(0);
+        animation: scaleIn 1s ease-out 1.5s forwards;
+      }
+
+      .hero-decorative-lines::after {
+        width: 4px;
+        height: 48px;
+        bottom: 0;
+        left: 0;
+        transform: scaleY(0);
+        animation: scaleInY 1s ease-out 1.8s forwards;
+      }
+
+      .hero-right {
+        max-width: 600px;
+        padding: 4rem 0;
+        opacity: 0;
+        transform: translateX(50px);
+        animation: fadeInLeft 1s ease-out 0.9s forwards;
+      }
+
+      .hero-info-box {
+        border: 1px solid var(--clr-border);
+        height: 160px;
+        display: flex;
+        position: relative;
+      }
+
+      .hero-info-left {
+        flex: 1;
+        border-right: 1px solid var(--clr-border);
+        display: flex;
+        align-items: end;
+        padding: 1rem;
+        position: relative;
+      }
+
+      .hero-info-icon {
+        border: 1px solid var(--clr-text);
+        padding: 0.5rem;
+        margin-right: 1rem;
+      }
+
+      .hero-info-right {
+        flex: 1;
+        display: flex;
+        align-items: end;
+        justify-content: end;
+      }
+
+      .hero-discover {
+        border: 1px solid var(--clr-text);
+        padding: 1.5rem 1rem;
+        text-align: center;
+        margin-top: 0;
+        position: relative;
+      }
+
+      .hero-discover-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .hero-discover h3 {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .hero-discover p {
+        font-size: 0.875rem;
+        color: var(--clr-text-muted);
+      }
+
+      .hero-discover-arrow {
+        font-size: 1.5rem;
+      }
+
+      .hero-corner-accent {
+        position: absolute;
+        bottom: -1rem;
+        left: -1rem;
+        width: 24px;
+        height: 24px;
+        border-left: 1px solid var(--clr-text);
+        border-bottom: 1px solid var(--clr-text);
+        border-radius: 0 0 0 8px;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInLeft {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        to {
+          transform: scaleX(1);
+        }
+      }
+
+      @keyframes scaleInY {
+        to {
+          transform: scaleY(1);
+        }
+      }
+
+      /* Main Content Grid */
+      .main-content {
+        margin-top: 0;
+        position: relative;
+        z-index: 10;
+        background: var(--clr-bg);
+      }
+
+      .content-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        border-left: 1px solid var(--clr-border);
+        border-right: 1px solid var(--clr-border);
+        position: relative;
+      }
+
+      .content-grid::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: var(--clr-border);
+        transform: translateX(-50%);
+      }
+
+      /* Sponsors Section */
+      .sponsors-section {
+        display: flex;
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .sponsors-label {
+        width: 200px;
+        padding: 1rem 2rem;
+        border-right: 1px solid var(--clr-border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .sponsors-carousel {
+        flex: 1;
+        padding: 1rem 0;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .sponsors-track {
+        display: flex;
+        gap: 2rem;
+        animation: scroll-sponsors 30s linear infinite;
+      }
+
+      @keyframes scroll-sponsors {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      .sponsor-item {
+        flex: 0 0 200px;
+        padding: 1rem;
+        text-align: center;
+        border-left: 1px solid var(--clr-border);
+        opacity: 0.7;
+        transition: var(--transition);
+      }
+
+      .sponsor-item:hover {
+        opacity: 1;
+      }
+
+      /* About Section */
+      .about-section {
+        padding: 4rem 0;
+      }
+
+      .about-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        margin-bottom: 1rem;
+        position: relative;
+      }
+
+      .section-title::before,
+      .section-title::after {
+        content: "";
+        position: absolute;
+        top: -1rem;
+        width: 8px;
+        height: 8px;
+        background: var(--clr-text);
+        border-radius: 50%;
+      }
+
+      .section-title::before {
+        left: 2rem;
+      }
+
+      .section-title::after {
+        left: 3rem;
+      }
+
+      .decorative-lines {
+        position: relative;
+        margin: 2rem 0;
+      }
+
+      .decorative-lines::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 2rem;
+        right: 0;
+        height: 1px;
+        background: var(--clr-border);
+      }
+
+      .decorative-lines::after {
+        content: "";
+        position: absolute;
+        top: 0.75rem;
+        left: 0;
+        width: 2rem;
+        height: 1px;
+        background: var(--clr-border);
+        transform: rotate(-45deg);
+      }
+
+      /* Features Grid */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 0 2rem;
+      }
+
+      .feature-card {
+        border: 1px solid var(--clr-border);
+        padding: 2rem;
+        position: relative;
+        transition: var(--transition);
+      }
+
+      .feature-card:hover {
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--clr-accent-gradient);
+        transform: scaleX(0);
+        transition: var(--transition);
+      }
+
+      .feature-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .feature-number {
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--clr-text-muted);
+        margin-bottom: 1rem;
+        border: 1px solid var(--clr-border);
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .feature-number::before,
+      .feature-number::after {
+        content: "";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border: 1px solid var(--clr-text);
+      }
+
+      .feature-number::before {
+        top: 4px;
+        left: 4px;
+        border-right: none;
+        border-bottom: none;
+        border-radius: 4px 0 0 0;
+      }
+
+      .feature-number::after {
+        bottom: 4px;
+        right: 4px;
+        border-left: none;
+        border-top: none;
+        border-radius: 0 0 4px 0;
+      }
+
+      .feature-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .feature-description {
+        color: var(--clr-text-muted);
+        line-height: 1.6;
+      }
+
+      /* Team Section */
+      .team-section {
+        padding: 4rem 0;
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        padding: 0 2rem;
+      }
+
+      .team-card {
+        border: 1px solid var(--clr-border);
+        overflow: hidden;
+        transition: var(--transition);
+      }
+
+      .team-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .team-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        border-bottom: 1px solid var(--clr-border);
+        font-size: 0.75rem;
+      }
+
+      .team-member-info {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      .team-member-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--clr-accent-gradient);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+        font-weight: 700;
+      }
+
+      .team-card-content {
+        padding: 1rem;
+      }
+
+      .team-member-quote {
+        font-style: italic;
+        color: var(--clr-text-muted);
+        line-height: 1.5;
+      }
+
+      /* Gallery Section */
+      .gallery-section {
+        padding: 4rem 0;
+        border-top: 1px solid var(--clr-border);
+      }
+
+      .gallery-header {
+        padding: 0 2rem 2rem;
+      }
+
+      .gallery-carousel {
+        display: flex;
+        gap: 2rem;
+        padding: 0 2rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .gallery-carousel::-webkit-scrollbar {
+        display: none;
+      }
+
+      .gallery-item {
+        flex: 0 0 300px;
+        border: 1px solid var(--clr-border);
+        overflow: hidden;
+        position: relative;
+        transition: var(--transition);
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .gallery-item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        border-bottom: 1px solid var(--clr-border);
+        font-size: 0.75rem;
+      }
+
+      .gallery-item-image {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(
+          45deg,
+          var(--clr-bg-alt),
+          var(--clr-border)
+        );
+        position: relative;
+      }
+
+      .gallery-item-image::before,
+      .gallery-item-image::after {
+        content: "";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border: 2px solid var(--clr-text);
+      }
+
+      .gallery-item-image::before {
+        top: 1rem;
+        left: 1rem;
+        border-right: none;
+        border-bottom: none;
+      }
+
+      .gallery-item-image::after {
+        bottom: 1rem;
+        right: 1rem;
+        border-left: none;
+        border-top: none;
+      }
+
+      .gallery-item-content {
+        padding: 1rem;
+      }
+
+      /* Stats Section */
+      .stats-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem;
+        border-top: 1px solid var(--clr-border);
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 900;
+        color: var(--clr-text);
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 0.875rem;
+        color: var(--clr-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      /* Footer */
+      .footer {
+        position: relative;
+        background-color: #000;
+        border-top: 1px solid var(--clr-border);
+        padding: 4rem 0 2rem;
+        text-align: center;
+        z-index: 10;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .footer-logo {
+        font-size: 2rem;
+        font-weight: 900;
+        margin-bottom: 2rem;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .footer-link {
+        color: var(--clr-text-muted);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-link:hover {
+        color: var(--clr-text);
+      }
+
+      .footer-copyright {
+        color: var(--clr-text-muted);
+        font-size: 0.875rem;
+      }
+
+      /* Mobile Menu */
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--clr-text);
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-menu-toggle {
+          display: block;
+        }
+
+        .hero-content {
+          flex-direction: column;
+          align-items: start;
+        }
+
+        .hero-right {
+          width: 100%;
+          padding: 2rem 0;
+        }
+
+        .content-grid::before {
+          display: none;
+        }
+
+        .sponsors-section {
+          flex-direction: column;
+        }
+
+        .sponsors-label {
+          width: 100%;
+          border-right: none;
+          border-bottom: 1px solid var(--clr-border);
+        }
+
+        .features-grid,
+        .team-grid {
+          grid-template-columns: 1fr;
+          padding: 0 1rem;
+        }
+
+        .stats-section {
+          flex-direction: column;
+          gap: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-logo">
+          <div class="logo-icon">VK</div>
+          VITKULT
+        </a>
+        <ul class="nav-links">
+          <li>
+            <a href="#hero" class="nav-link active" data-section="hero">Home</a>
+          </li>
+          <li>
+            <a href="#about" class="nav-link" data-section="about">About Us</a>
+          </li>
+          <li>
+            <a href="#events" class="nav-link" data-section="events">Events</a>
+          </li>
+          <li><a href="#team" class="nav-link" data-section="team">Team</a></li>
+          <li>
+            <a href="#gallery" class="nav-link" data-section="gallery"
+              >Gallery</a
+            >
+          </li>
+        </ul>
+        <button class="mobile-menu-toggle">☰</button>
+      </div>
+    </nav>
+
+    <!-- Hero Section with 3D -->
+    <section id="hero" class="hero">
+      <div class="hero-3d-container">
+        <canvas class="hero-canvas" id="heroCanvas"></canvas>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-left">
+          <div class="hero-tagline">Where Tech, Art and Culture Collide!</div>
+          <div class="hero-accent-line"></div>
+          <h1 class="hero-title">
+            VITKULT
+            <div class="hero-decorative-lines"></div>
+          </h1>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-info-box">
+            <div class="hero-info-left">
+              <div class="hero-info-icon">🎭</div>
+              <div class="hero-corner-accent"></div>
+            </div>
+            <div class="hero-info-right"></div>
+          </div>
+
+          <div class="hero-discover">
+            <div class="hero-discover-content">
+              <div>
+                <h3>Why VITKULT Excellence?</h3>
+                <p>Innovation meets tradition.</p>
+              </div>
+              <div class="hero-discover-arrow">◀</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-grid">
+        <!-- Sponsors Section -->
+        <section class="sponsors-section">
+          <div class="sponsors-label">Our Partners</div>
+          <div class="sponsors-carousel">
+            <div class="sponsors-track">
+              <div class="sponsor-item">VIT Bhopal</div>
+              <div class="sponsor-item">Student Affairs</div>
+              <div class="sponsor-item">Cultural Board</div>
+              <div class="sponsor-item">Tech Community</div>
+              <div class="sponsor-item">Alumni Network</div>
+              <div class="sponsor-item">Local Artists</div>
+              <div class="sponsor-item">VIT Bhopal</div>
+              <div class="sponsor-item">Student Affairs</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="events" class="stats-section">
+          <div class="stat-item">
+            <div class="stat-number">1200+</div>
+            <div class="stat-label">Active Members</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Events Organized</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">25+</div>
+            <div class="stat-label">Workshops</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Collaborations</div>
+          </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+          <div class="about-header">
+            <h2 class="section-title">
+              What do we Stand For?
+              <div class="decorative-lines"></div>
+            </h2>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-number">1</div>
+              <h3 class="feature-title">Cultural Events</h3>
+              <p class="feature-description">
+                Organizing vibrant festivals, traditional performances, and
+                artistic showcases that celebrate diverse cultural heritage
+                through modern expression and innovation.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-number">2</div>
+              <h3 class="feature-title">Technical Workshops</h3>
+              <p class="feature-description">
+                Bridging the gap between technology and culture through coding
+                workshops, digital art sessions, and tech-enabled creative
+                projects.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-number">3</div>
+              <h3 class="feature-title">Event Management</h3>
+              <p class="feature-description">
+                Professional event planning and execution, from intimate
+                workshops to large-scale festivals, developing organizational
+                and leadership skills.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-number">4</div>
+              <h3 class="feature-title">Creative Expression</h3>
+              <p class="feature-description">
+                Providing platforms for artistic talents including music, dance,
+                drama, literature, digital arts, and multimedia storytelling.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-number">5</div>
+              <h3 class="feature-title">Leadership Development</h3>
+              <p class="feature-description">
+                Empowering members with project management, team coordination,
+                public speaking, and entrepreneurial skills for future success.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-number">6</div>
+              <h3 class="feature-title">Community Building</h3>
+              <p class="feature-description">
+                Creating inclusive spaces for students to connect, collaborate,
+                and grow together through shared experiences and meaningful
+                friendships.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="team-section">
+          <div class="about-header">
+            <h2 class="section-title">
+              Meet Our Core Team
+              <div class="decorative-lines"></div>
+            </h2>
+          </div>
+
+          <div class="team-grid">
+            <div class="team-card">
+              <div class="team-card-header">
+                <div class="team-member-info">
+                  <div class="team-member-avatar">GP</div>
+                  <div>Saravana</div>
+                </div>
+                <div>President</div>
+              </div>
+              <div class="team-card-content">
+                <p class="team-member-quote">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum excepturi, tenetur ad labore iure consectetur? Facilis distinctio consequuntur voluptas eius?
+                </p>
+              </div>
+            </div>
+
+            <div class="team-card">
+              <div class="team-card-header">
+                <div class="team-member-info">
+                  <div class="team-member-avatar">AV</div>
+                  <div>Abc</div>
+                </div>
+                <div>Vice President</div>
+              </div>
+              <div class="team-card-content">
+                <p class="team-member-quote">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, vero. Nobis aspernatur sint eos, repudiandae sit omnis totam iusto? Possimus.
+                </p>
+              </div>
+            </div>
+
+            <div class="team-card">
+              <div class="team-card-header">
+                <div class="team-member-info">
+                  <div class="team-member-avatar">UP</div>
+                  <div>abc</div>
+                </div>
+                <div>General Secretary</div>
+              </div>
+              <div class="team-card-content">
+                <p class="team-member-quote">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, vero. Nobis aspernatur sint eos, repudiandae sit omnis totam iusto? Possimus.
+                </p>
+              </div>
+            </div>
+
+            <div class="team-card">
+              <div class="team-card-header">
+                <div class="team-member-info">
+                  <div class="team-member-avatar">AD</div>
+                  <div>abc</div>
+                </div>
+                <div>Operations Lead</div>
+              </div>
+              <div class="team-card-content">
+                <p class="team-member-quote">
+                  "Stepping into VITKULT transformed my university experience.
+                  With tons of awesome events and incredible people, this club
+                  is where I've grown the most. It's truly the place to be!"
+                </p>
+              </div>
+            </div>
+
+            <div class="team-card">
+              <div class="team-card-header">
+                <div class="team-member-info">
+                  <div class="team-member-avatar">PK</div>
+                  <div>abc</div>
+                </div>
+                <div>Event Manager</div>
+              </div>
+              <div class="team-card-content">
+                <p class="team-member-quote">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint enim nobis voluptate vitae sequi molestiae similique blanditiis sit cumque nemo?
+                </p>
+              </div>
+            </div>
+
+            <div class="team-card">
+              <div class="team-card-header">
+                <div class="team-member-info">
+                  <div class="team-member-avatar">PS</div>
+                  <div>abc</div>
+                </div>
+                <div>Event Management Team</div>
+              </div>
+              <div class="team-card-content">
+                <p class="team-member-quote">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel molestiae nesciunt iusto officia sapiente dicta ipsum reiciendis neque quas accusantium voluptatem iure beatae, maiores recusandae excepturi animi inventore nihil nemo?
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery-section">
+          <div class="gallery-header">
+            <h2 class="section-title">
+              Explore Our Events
+              <div class="decorative-lines"></div>
+            </h2>
+          </div>
+
+          <div class="gallery-carousel">
+            <div class="gallery-item">
+              <div class="gallery-item-header">
+                <span>Cultural</span>
+                <span>15/12/2024</span>
+              </div>
+              <div class="gallery-item-image"></div>
+              <div class="gallery-item-content">
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate numquam doloribus debitis nihil incidunt sint eveniet est temporibus consequatur maiores, omnis pariatur error, quaerat excepturi? Velit nobis eos cupiditate officiis.
+                </p>
+              </div>
+            </div>
+
+            <div class="gallery-item">
+              <div class="gallery-item-header">
+                <span>Tech</span>
+                <span>28/11/2025</span>
+              </div>
+              <div class="gallery-item-image"></div>
+              <div class="gallery-item-content">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione repellendus eligendi, cumque optio deleniti quaerat dolore. Dolor explicabo non ex.
+                </p>
+              </div>
+            </div>
+
+            <div class="gallery-item">
+              <div class="gallery-item-header">
+                <span>Festival</span>
+                <span>05/11/2025</span>
+              </div>
+              <div class="gallery-item-image"></div>
+              <div class="gallery-item-content">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam obcaecati odit soluta dolorum, quae pariatur iste, reprehenderit ad, voluptatum veniam a quidem nihil architecto! Similique laudantium esse aspernatur dicta incidunt!
+                </p>
+              </div>
+            </div>
+
+            <div class="gallery-item">
+              <div class="gallery-item-header">
+                <span>Summit</span>
+                <span>20/10/2025</span>
+              </div>
+              <div class="gallery-item-image"></div>
+              <div class="gallery-item-content">
+                <p>
+                  A comprehensive leadership development program focusing on
+                  project management, team building, and entrepreneurial skills
+                  for club members... Read More
+                </p>
+              </div>
+            </div>
+
+            <div class="gallery-item">
+              <div class="gallery-item-header">
+                <span>Open Mic Revolution</span>
+                <span>15/10/2024</span>
+              </div>
+              <div class="gallery-item-image"></div>
+              <div class="gallery-item-content">
+                <p>
+                  Monthly open mic sessions providing a platform for students to
+                  showcase their talents in poetry, music, stand-up comedy, and
+                  tech presentations... Read More
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-logo">VITKULT</div>
+        <div class="footer-links">
+          <a href="#" class="footer-link">About</a>
+          <a href="#" class="footer-link">Events</a>
+          <a href="#" class="footer-link">Team</a>
+          <a href="#" class="footer-link">Gallery</a>
+          <a href="#" class="footer-link">Join Us</a>
+          <a href="#" class="footer-link">Contact</a>
+        </div>
+        <div class="footer-copyright">
+          © 2025 VITKULT Club. All rights reserved. Made with ❤️ by the VITKULT
+          community.<br />
+          Where Tech, Art and Culture Collide - VIT Bhopal
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Register ScrollTrigger plugin
+      gsap.registerPlugin(ScrollTrigger);
+
+      // 3D Scene Setup
+      let scene, camera, renderer, clock;
+      let mainCrystal, energyField, dataStreams, culturalNodes, techGrid;
+      let mouseX = 0,
+        mouseY = 0;
+      let isScrolling = false;
+
+      function init3D() {
+        const canvas = document.getElementById("heroCanvas");
+
+        // Scene setup
+        scene = new THREE.Scene();
+
+        // Camera setup
+        camera = new THREE.PerspectiveCamera(
+          75,
+          window.innerWidth / window.innerHeight,
+          0.1,
+          1000
+        );
+        camera.position.set(0, 0, 20);
+
+        // Renderer setup
+        renderer = new THREE.WebGLRenderer({
+          canvas: canvas,
+          antialias: true,
+          alpha: true,
+          powerPreference: "high-performance",
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.2;
+
+        // Clock for animations
+        clock = new THREE.Clock();
+
+        // Advanced Lighting Setup
+        setupLighting();
+
+        // Create the miraculous 3D composition
+        createMiraculousVitkultWorld();
+
+        // Start animation loop
+        animate();
+
+        // Event listeners
+        window.addEventListener("resize", onWindowResize);
+        document.addEventListener("mousemove", onDocumentMouseMove, false);
+
+        // Setup scroll animations
+        setupScrollAnimations();
+      }
+
+      function setupLighting() {
+        // Ambient light for overall illumination
+        const ambientLight = new THREE.AmbientLight(0x404040, 0.3);
+        scene.add(ambientLight);
+
+        // Main directional light with cool white
+        const mainLight = new THREE.DirectionalLight(0x87ceeb, 1.5);
+        mainLight.position.set(20, 20, 10);
+        mainLight.castShadow = true;
+        mainLight.shadow.mapSize.width = 4096;
+        mainLight.shadow.mapSize.height = 4096;
+        mainLight.shadow.camera.near = 0.1;
+        mainLight.shadow.camera.far = 500;
+        mainLight.shadow.camera.left = -50;
+        mainLight.shadow.camera.right = 50;
+        mainLight.shadow.camera.top = 50;
+        mainLight.shadow.camera.bottom = -50;
+        scene.add(mainLight);
+
+        // Accent lights with subtle colors
+        const accentLight1 = new THREE.PointLight(0x6a5acd, 1, 100);
+        accentLight1.position.set(-30, 10, 20);
+        scene.add(accentLight1);
+
+        const accentLight2 = new THREE.PointLight(0x20b2aa, 0.8, 80);
+        accentLight2.position.set(30, -10, -20);
+        scene.add(accentLight2);
+
+        // Rim light for edge definition
+        const rimLight = new THREE.DirectionalLight(0xffffff, 0.5);
+        rimLight.position.set(0, 0, -50);
+        scene.add(rimLight);
+      }
+
+      function createMiraculousVitkultWorld() {
+        // Central Crystal - The heart of VITKULT
+        createMainCrystal();
+
+        // Energy Field - Representing the fusion of tech, art, culture
+        createEnergyField();
+
+        // Data Streams - Technology aspect
+        createDataStreams();
+
+        // Cultural Nodes - Culture aspect
+        createCulturalNodes();
+
+        // Tech Grid - Innovation framework
+        createTechGrid();
+
+        // Ambient Particles
+        createAmbientParticles();
+      }
+
+      function createMainCrystal() {
+        const crystalGroup = new THREE.Group();
+
+        // Main crystal geometry with complex faceting
+        const crystalGeometry = new THREE.ConeGeometry(3, 8, 8);
+
+        // Custom shader material for the crystal
+        const crystalMaterial = new THREE.ShaderMaterial({
+          uniforms: {
+            time: { value: 0 },
+            opacity: { value: 0.8 },
+            refractionRatio: { value: 0.98 },
+            fresnel: { value: 2.0 },
+          },
+          vertexShader: `
+          varying vec3 vWorldPosition;
+          varying vec3 vWorldNormal;
+          varying vec3 vViewPosition;
+          
+          void main() {
+            vec4 worldPosition = modelMatrix * vec4(position, 1.0);
+            vWorldPosition = worldPosition.xyz;
+            vWorldNormal = normalize(normalMatrix * normal);
+            
+            vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+            vViewPosition = -mvPosition.xyz;
+            
+            gl_Position = projectionMatrix * mvPosition;
+          }
+        `,
+          fragmentShader: `
+          uniform float time;
+          uniform float opacity;
+          uniform float refractionRatio;
+          uniform float fresnel;
+          
+          varying vec3 vWorldPosition;
+          varying vec3 vWorldNormal;
+          varying vec3 vViewPosition;
+          
+          void main() {
+            vec3 worldNormal = normalize(vWorldNormal);
+            vec3 viewDirection = normalize(vViewPosition);
+            
+            float fresnelFactor = pow(1.0 - dot(viewDirection, worldNormal), fresnel);
+            
+            vec3 baseColor = vec3(0.5, 0.8, 1.0);
+            vec3 accentColor = vec3(0.2, 0.6, 0.8);
+            
+            float pulse = sin(time * 2.0 + vWorldPosition.y * 0.5) * 0.5 + 0.5;
+            vec3 color = mix(baseColor, accentColor, pulse);
+            
+            // Add internal glow
+            float glow = sin(time * 3.0 + length(vWorldPosition) * 0.2) * 0.3 + 0.7;
+            color *= glow;
+            
+            gl_FragColor = vec4(color, opacity * (0.6 + fresnelFactor * 0.4));
+          }
+        `,
+          transparent: true,
+          side: THREE.DoubleSide,
+        });
+
+        mainCrystal = new THREE.Mesh(crystalGeometry, crystalMaterial);
+        mainCrystal.position.set(0, 0, 0);
+        crystalGroup.add(mainCrystal);
+
+        // Add smaller crystal fragments around the main one
+        for (let i = 0; i < 8; i++) {
+          const fragmentGeometry = new THREE.ConeGeometry(0.5, 2, 6);
+          const fragmentMaterial = crystalMaterial.clone();
+          fragmentMaterial.uniforms.opacity.value = 0.4;
+
+          const fragment = new THREE.Mesh(fragmentGeometry, fragmentMaterial);
+          const angle = (i / 8) * Math.PI * 2;
+          const radius = 6;
+
+          fragment.position.set(
+            Math.cos(angle) * radius,
+            Math.sin(angle * 3) * 2,
+            Math.sin(angle) * radius * 0.5
+          );
+
+          fragment.rotation.set(
+            Math.random() * Math.PI,
+            Math.random() * Math.PI,
+            Math.random() * Math.PI
+          );
+
+          fragment.userData = {
+            rotationSpeed: {
+              x: (Math.random() - 0.5) * 0.01,
+              y: (Math.random() - 0.5) * 0.01,
+              z: (Math.random() - 0.5) * 0.01,
+            },
+            originalPosition: fragment.position.clone(),
+          };
+
+          crystalGroup.add(fragment);
+        }
+
+        scene.add(crystalGroup);
+        mainCrystal.parent = crystalGroup;
+      }
+
+      function createEnergyField() {
+        energyField = new THREE.Group();
+
+        // Create concentric energy rings
+        for (let i = 0; i < 5; i++) {
+          const radius = 8 + i * 3;
+          const ringGeometry = new THREE.TorusGeometry(radius, 0.1, 16, 100);
+
+          const ringMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+              time: { value: 0 },
+              opacity: { value: 0.3 },
+            },
+            vertexShader: `
+            varying vec2 vUv;
+            varying vec3 vPosition;
+            
+            void main() {
+              vUv = uv;
+              vPosition = position;
+              gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            }
+          `,
+            fragmentShader: `
+            uniform float time;
+            uniform float opacity;
+            varying vec2 vUv;
+            varying vec3 vPosition;
+            
+            void main() {
+              float wave = sin(time * 2.0 + vPosition.x * 0.1) * 0.5 + 0.5;
+              vec3 color = vec3(0.4, 0.7, 1.0) * (0.5 + wave * 0.5);
+              gl_FragColor = vec4(color, opacity);
+            }
+          `,
+            transparent: true,
+            wireframe: true,
+          });
+
+          const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+          ring.rotation.x = Math.PI / 2;
+          ring.userData = { rotationSpeed: 0.01 * (i + 1) };
+
+          energyField.add(ring);
+        }
+
+        scene.add(energyField);
+      }
+
+      function createDataStreams() {
+        dataStreams = new THREE.Group();
+
+        // Create flowing data streams
+        for (let i = 0; i < 20; i++) {
+          const streamGeometry = new THREE.CylinderGeometry(0.05, 0.05, 15);
+          const streamMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+              time: { value: 0 },
+              streamId: { value: i },
+            },
+            vertexShader: `
+            uniform float time;
+            uniform float streamId;
+            varying vec3 vPosition;
+            varying float vIntensity;
+            
+            void main() {
+              vPosition = position;
+              float wave = sin(time * 3.0 + streamId + position.y * 0.2);
+              vIntensity = wave * 0.5 + 0.5;
+              
+              vec3 pos = position;
+              pos.x += sin(time + streamId) * 0.5;
+              pos.z += cos(time + streamId) * 0.5;
+              
+              gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+            }
+          `,
+            fragmentShader: `
+            varying vec3 vPosition;
+            varying float vIntensity;
+            
+            void main() {
+              vec3 color = vec3(0.3, 0.6, 1.0);
+              float alpha = vIntensity * (1.0 - abs(vPosition.y) / 7.5);
+              gl_FragColor = vec4(color, alpha * 0.6);
+            }
+          `,
+            transparent: true,
+          });
+
+          const stream = new THREE.Mesh(streamGeometry, streamMaterial);
+
+          const angle = (i / 20) * Math.PI * 2;
+          const radius = 12;
+          stream.position.set(
+            Math.cos(angle) * radius,
+            0,
+            Math.sin(angle) * radius
+          );
+
+          stream.userData = {
+            rotationSpeed: 0.02,
+            originalAngle: angle,
+          };
+
+          dataStreams.add(stream);
+        }
+
+        scene.add(dataStreams);
+      }
+
+      function createCulturalNodes() {
+        culturalNodes = new THREE.Group();
+
+        // Create cultural symbols as floating nodes
+        for (let i = 0; i < 12; i++) {
+          const nodeGeometry = new THREE.OctahedronGeometry(0.8);
+          const nodeMaterial = new THREE.MeshLambertMaterial({
+            color: new THREE.Color().setHSL((i / 12) * 0.8 + 0.1, 0.7, 0.6),
+            transparent: true,
+            opacity: 0.7,
+          });
+
+          const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
+
+          const phi = Math.acos(-1 + (2 * i) / 12);
+          const theta = Math.sqrt(12 * Math.PI) * phi;
+          const radius = 18;
+
+          node.position.setFromSphericalCoords(radius, phi, theta);
+
+          node.userData = {
+            rotationSpeed: {
+              x: (Math.random() - 0.5) * 0.02,
+              y: (Math.random() - 0.5) * 0.02,
+              z: (Math.random() - 0.5) * 0.02,
+            },
+            floatSpeed: Math.random() * 0.015 + 0.005,
+            originalPosition: node.position.clone(),
+          };
+
+          culturalNodes.add(node);
+        }
+
+        scene.add(culturalNodes);
+      }
+
+      function createTechGrid() {
+        techGrid = new THREE.Group();
+
+        // Create a subtle grid framework
+        const gridSize = 40;
+        const divisions = 20;
+
+        const gridHelper = new THREE.GridHelper(
+          gridSize,
+          divisions,
+          0x404040,
+          0x202020
+        );
+        gridHelper.position.y = -15;
+        gridHelper.material.transparent = true;
+        gridHelper.material.opacity = 0.1;
+
+        techGrid.add(gridHelper);
+
+        // Add vertical grid
+        const verticalGrid = gridHelper.clone();
+        verticalGrid.rotation.z = Math.PI / 2;
+        verticalGrid.position.set(0, 0, -15);
+        techGrid.add(verticalGrid);
+
+        scene.add(techGrid);
+      }
+
+      function createAmbientParticles() {
+        const particleCount = 2000;
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+        const sizes = new Float32Array(particleCount);
+
+        const colorPalette = [
+          new THREE.Color(0x87ceeb), // Sky blue
+          new THREE.Color(0x6a5acd), // Slate blue
+          new THREE.Color(0x20b2aa), // Light sea green
+          new THREE.Color(0x4169e1), // Royal blue
+          new THREE.Color(0x00ced1), // Dark turquoise
+        ];
+
+        for (let i = 0; i < particleCount; i++) {
+          // Position in a spherical distribution
+          const radius = Math.random() * 100 + 50;
+          const phi = Math.random() * Math.PI * 2;
+          const theta = Math.random() * Math.PI;
+
+          positions[i * 3] = radius * Math.sin(theta) * Math.cos(phi);
+          positions[i * 3 + 1] = radius * Math.sin(theta) * Math.sin(phi);
+          positions[i * 3 + 2] = radius * Math.cos(theta);
+
+          // Color
+          const color =
+            colorPalette[Math.floor(Math.random() * colorPalette.length)];
+          colors[i * 3] = color.r;
+          colors[i * 3 + 1] = color.g;
+          colors[i * 3 + 2] = color.b;
+
+          // Size
+          sizes[i] = Math.random() * 3 + 1;
+        }
+
+        const particleGeometry = new THREE.BufferGeometry();
+        particleGeometry.setAttribute(
+          "position",
+          new THREE.BufferAttribute(positions, 3)
+        );
+        particleGeometry.setAttribute(
+          "color",
+          new THREE.BufferAttribute(colors, 3)
+        );
+        particleGeometry.setAttribute(
+          "size",
+          new THREE.BufferAttribute(sizes, 1)
+        );
+
+        const particleMaterial = new THREE.ShaderMaterial({
+          uniforms: {
+            time: { value: 0 },
+          },
+          vertexShader: `
+          attribute float size;
+          varying vec3 vColor;
+          uniform float time;
+          
+          void main() {
+            vColor = color;
+            
+            vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+            gl_PointSize = size * (300.0 / -mvPosition.z) * (1.0 + sin(time + position.x * 0.01) * 0.3);
+            gl_Position = projectionMatrix * mvPosition;
+          }
+        `,
+          fragmentShader: `
+          varying vec3 vColor;
+          
+          void main() {
+            vec2 center = gl_PointCoord - 0.5;
+            float dist = length(center);
+            float alpha = 1.0 - smoothstep(0.0, 0.5, dist);
+            alpha *= 0.8;
+            
+            gl_FragColor = vec4(vColor, alpha);
+          }
+        `,
+          transparent: true,
+          vertexColors: true,
+          blending: THREE.AdditiveBlending,
+        });
+
+        const particles = new THREE.Points(particleGeometry, particleMaterial);
+        scene.add(particles);
+
+        particles.userData = { rotationSpeed: 0.0005 };
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+
+        const elapsedTime = clock.getElapsedTime();
+
+        // Update main crystal
+        if (mainCrystal && mainCrystal.material.uniforms) {
+          mainCrystal.material.uniforms.time.value = elapsedTime;
+          mainCrystal.rotation.y += 0.01;
+          mainCrystal.rotation.x = Math.sin(elapsedTime * 0.5) * 0.1;
+        }
+
+        // Update crystal fragments
+        if (mainCrystal.parent) {
+          mainCrystal.parent.children.forEach((child) => {
+            if (child !== mainCrystal && child.userData.rotationSpeed) {
+              child.rotation.x += child.userData.rotationSpeed.x;
+              child.rotation.y += child.userData.rotationSpeed.y;
+              child.rotation.z += child.userData.rotationSpeed.z;
+
+              child.position.y =
+                child.userData.originalPosition.y +
+                Math.sin(elapsedTime * 0.8 + child.position.x) * 0.5;
+            }
+          });
+        }
+
+        // Update energy field
+        if (energyField) {
+          energyField.children.forEach((ring) => {
+            ring.rotation.z += ring.userData.rotationSpeed;
+            if (ring.material.uniforms) {
+              ring.material.uniforms.time.value = elapsedTime;
+            }
+          });
+        }
+
+        // Update data streams
+        if (dataStreams) {
+          dataStreams.children.forEach((stream, index) => {
+            if (stream.material.uniforms) {
+              stream.material.uniforms.time.value = elapsedTime;
+            }
+
+            const angle =
+              stream.userData.originalAngle +
+              elapsedTime * stream.userData.rotationSpeed;
+            const radius = 12;
+            stream.position.x = Math.cos(angle) * radius;
+            stream.position.z = Math.sin(angle) * radius;
+            stream.rotation.y = angle;
+          });
+        }
+
+        // Update cultural nodes
+        if (culturalNodes) {
+          culturalNodes.children.forEach((node) => {
+            node.rotation.x += node.userData.rotationSpeed.x;
+            node.rotation.y += node.userData.rotationSpeed.y;
+            node.rotation.z += node.userData.rotationSpeed.z;
+
+            const floatOffset =
+              Math.sin(elapsedTime * node.userData.floatSpeed) * 2;
+            node.position.copy(node.userData.originalPosition);
+            node.position.y += floatOffset;
+          });
+        }
+
+        // Update particles
+        scene.traverse((child) => {
+          if (child instanceof THREE.Points && child.material.uniforms) {
+            child.material.uniforms.time.value = elapsedTime;
+            if (child.userData.rotationSpeed) {
+              child.rotation.y += child.userData.rotationSpeed;
+            }
+          }
+        });
+
+        // Smooth camera movement based on mouse
+        if (!isScrolling) {
+          const targetX = mouseX * 0.0003;
+          const targetY = -mouseY * 0.0003;
+
+          camera.position.x += (targetX - camera.position.x) * 0.02;
+          camera.position.y += (targetY - camera.position.y) * 0.02;
+
+          // Add subtle orbital motion
+          const orbitRadius = 0.5;
+          camera.position.x += Math.cos(elapsedTime * 0.1) * orbitRadius;
+          camera.position.z += Math.sin(elapsedTime * 0.1) * orbitRadius;
+
+          camera.lookAt(scene.position);
+        }
+
+        renderer.render(scene, camera);
+      }
+
+      function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
+
+      function onDocumentMouseMove(event) {
+        mouseX = event.clientX - window.innerWidth / 2;
+        mouseY = event.clientY - window.innerHeight / 2;
+      }
+
+      function setupScrollAnimations() {
+        // Crystal scaling on scroll
+        if (mainCrystal) {
+          gsap.to(mainCrystal.scale, {
+            scrollTrigger: {
+              trigger: ".hero",
+              start: "top top",
+              end: "bottom top",
+              scrub: 1,
+              onUpdate: () => (isScrolling = true),
+              onComplete: () => (isScrolling = false),
+            },
+            x: 1.5,
+            y: 1.5,
+            z: 1.5,
+            duration: 1,
+          });
+        }
+
+        // Camera movement on scroll
+        gsap.to(camera.position, {
+          scrollTrigger: {
+            trigger: ".hero",
+            start: "top top",
+            end: "bottom top",
+            scrub: 1,
+          },
+          z: 30,
+          y: 10,
+          duration: 1,
+        });
+
+        // Energy field expansion
+        if (energyField) {
+          gsap.to(energyField.scale, {
+            scrollTrigger: {
+              trigger: ".hero",
+              start: "top top",
+              end: "bottom top",
+              scrub: 1,
+            },
+            x: 1.5,
+            y: 1.5,
+            z: 1.5,
+            duration: 1,
+          });
+        }
+
+        // Content animations
+        gsap.fromTo(
+          ".feature-card",
+          {
+            y: 50,
+            opacity: 0,
+            scale: 0.9,
+            rotationX: -15,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            rotationX: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "back.out(1.7)",
+            scrollTrigger: {
+              trigger: ".features-grid",
+              start: "top 80%",
+              end: "bottom 60%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+
+        gsap.fromTo(
+          ".team-card",
+          {
+            y: 30,
+            opacity: 0,
+            scale: 0.95,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ".team-grid",
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+
+      // Enhanced Navigation System
+      function initNavigation() {
+        const navLinks = document.querySelectorAll(".nav-link");
+        const sections = document.querySelectorAll("section[id]");
+
+        function updateActiveNav() {
+          let current = "hero";
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.offsetHeight;
+            const scrollPos = window.scrollY;
+
+            if (
+              scrollPos >= sectionTop &&
+              scrollPos < sectionTop + sectionHeight
+            ) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.dataset.section === current) {
+              link.classList.add("active");
+            }
+          });
+        }
+
+        function smoothScrollTo(target) {
+          const targetElement = document.querySelector(target);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        }
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetSection = this.getAttribute("href");
+            smoothScrollTo(targetSection);
+          });
+        });
+
+        window.addEventListener("scroll", updateActiveNav);
+        updateActiveNav();
+      }
+
+      // Initialize everything when DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        init3D();
+        initNavigation();
+      });
+    </script>
+  </body>
+</html>

@@ -38,6 +38,10 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleRedirect = () => {
+    window.location.href = "/pages/index.html";
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden particle-bg">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,black_70%,transparent_110%)]"></div>
@@ -70,6 +74,7 @@ const Hero = () => {
         <div className="mb-8 relative">
           {showCuteBot && (
             <motion.div
+              onClick={handleRedirect}
               className="absolute z-50 top-10 left-10 flex flex-col items-center"
               initial={{ x: 300, opacity: 0 }}
               animate={{
