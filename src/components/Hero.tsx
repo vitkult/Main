@@ -75,7 +75,7 @@ const Hero = () => {
           {showCuteBot && (
             <motion.div
               onClick={handleRedirect}
-              className="absolute z-50 top-10 left-10 flex flex-col items-center"
+              className="absolute z-50 top-10 left-10 flex flex-col items-center cursor-pointer"
               initial={{ x: 300, opacity: 0 }}
               animate={{
                 x: 0,
@@ -97,6 +97,7 @@ const Hero = () => {
               }}
             >
               <motion.div
+                className="cursor-pointer"
                 animate={{
                   rotate: [0, 20, -20, 20, 0],
                 }}
@@ -108,7 +109,7 @@ const Hero = () => {
               >
                 <Bot className="h-16 w-16 text-electric animate-bounce-subtle cursor-pointer" />
               </motion.div>
-              <span className="text-sm text-electric font-semibold mt-2">
+              <span className="text-sm text-electric font-semibold mt-2 cursor-pointer select-none">
                 Hi!
               </span>
             </motion.div>
