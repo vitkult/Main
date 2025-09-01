@@ -116,7 +116,7 @@ const EventCalendar = () => {
                           {event.title}
                         </h3>
                       </div>
-                      <p className="text-muted-foreground">
+                      <p className="text-muted-foreground text-xs leading-[1.5]">
                         {event.description}
                       </p>
                     </div>
@@ -134,12 +134,7 @@ const EventCalendar = () => {
                     <div className="flex items-center gap-3 text-muted-foreground">
                       <Calendar className="h-5 w-5 text-primary flex-shrink-0" />
                       <span>
-                        {new Date(event.date).toLocaleDateString("en-US", {
-                          weekday: "long",
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })}
+                        {event.date}
                       </span>
                     </div>
                     <div className="flex items-center gap-3 text-muted-foreground">

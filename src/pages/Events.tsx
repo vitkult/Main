@@ -13,42 +13,61 @@ import {
   Presentation,
   Award,
   Star,
+  Coins,
+  Wallet,
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import { Link } from "react-router-dom";
+import { Certificate } from "crypto";
 
 export const upcomingEvents = [
   {
     id: 1,
-    title: "Agentic AI Hackathon 2025: Code the Future",
-    date: "11-09-2025",
-    time: "1:10PM - 4:30PM",
-    location: "AB2 Auditorium 1, VIT Bhopal University",
-    type: "Tech Talk",
+    title: "BOTH : Generative and Agentic AI Session + Workshop AND Event Season 1 - House Of Secrets + Season 2 - The Red File ",
+    date: "Sept 11th 2025, Thursday AND Sept 12th 2025, Thursday",
+    time: "1:30PM to - 5:00PM AND  10:00AM to - 5:00PM",
+    location: "Auditorium 1, Academic Block 2 AND Auditorium 1, Academic Block 1",
+    type: "Gaming",
     participants: 400,
-    prize: "Reveling Soon...",
+    prize: "Rs 130   Per Participant,  Rs 650 per Full Team",
     description:
-      "Unleash your coding prowess at Agentic AI Hackathon 2025! Join us for a thrilling 3-hour coding marathon where innovation meets competition. Collaborate, create, and conquer challenges to win exciting prizes and make your mark in the tech world.",
+      "Speaker - Mr. Hari Prasad R CEO and Founder, DeepinsigthsX Gen AI Strategist, LLM System Architect, Author Of 3 AI Books Berlin, Germany AND Dive into the enigmatic world of 'House of Secrets' and 'Red File' at VIT Bhopal University. Unravel mysteries, solve puzzles, and embark on thrilling adventures in these immersive gaming experiences. Join us for a journey filled with suspense and excitement!",
     image: "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
     status: "Registrations Open",
     featured: true,
   },
   {
     id: 2,
-    title: "House of Secrets(season-1) and red file (season -2)",
-    date: "12-09-2025",
-    time: "10:30PM-4:30PM",
-    location: "VIT Bhopal University",
+    title: "Generative and Agentic AI Session + Workshop",
+    date: "Sept 11th 2025, Thursday",
+    time: "1:30PM to - 5:00PM",
+    location: "Auditorium 1, Academic Block 2",
+    type: "Tech Talk",
+    participants: 400,
+    prize: "Rupees 50  per participant",
+    Certificate: "Certificates will be provided to all the Participants",
+    description:
+      "Speaker - Mr. Hari Prasad R CEO and Founder, DeepinsigthsX Gen AI Strategist, LLM System Architect, Author Of 3 AI Books Berlin, Germany",
+    image: "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
+    status: "Registrations Open",
+    featured: true,
+  },
+  {
+    id: 3,
+    title: "Event Season 1 - House Of Secrets + Season 2 - The Red File ",
+    date: "Sept 12th 2025, Thursday",
+    time: "10:00AM to - 5:00PM",
+    location: "Auditorium 1, Academic Block 1",
     type: "Gaming",
     participants: 400,
-    prize: "Reveling Soon...",
+    prize: "Rs 80 Per Participant,  Rs 400 per Full Team (Team size 1-5)",
     description:
       "Dive into the enigmatic world of 'House of Secrets' and 'Red File' at VIT Bhopal University. Unravel mysteries, solve puzzles, and embark on thrilling adventures in these immersive gaming experiences. Join us for a journey filled with suspense and excitement!",
     image: "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
     status: "Registrations Open",
     featured: true,
   },
-  
+   
 
 ];
 
@@ -213,14 +232,19 @@ const UpcomingEventsSection = ({ events, getEventTypeColor, getEventTypeIcon, ge
               </div>
             </CardHeader>
             <CardContent className="flex-grow animate-fade-in" style={{ animationDelay: '500ms' }}>
-              <p className="text-muted-foreground mb-6">{event.description}</p>
+              <p className="text-muted-foreground mb-6 text-xs leading-[1.5]">{event.description}</p>
+              {
+                event.Certificate && (
+                  <div className="flex items-center gap-3 mb-4 text-sm text-accent font-semibold"><span>{event.Certificate}</span></div>
+                )
+              }
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                <div className="flex items-center gap-3"><Calendar className="h-4 w-4 text-primary" /> <span>{new Date(event.date).toLocaleDateString("en-IN", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span></div>
+                <div className="flex items-center gap-3"><Calendar className="h-4 w-4 text-primary" /> <span>{event.date}</span></div>
                 <div className="flex items-center gap-3"><Clock className="h-4 w-4 text-primary" /> <span>{event.time}</span></div>
                 <div className="flex items-center gap-3"><MapPin className="h-4 w-4 text-primary" /> <span>{event.location}</span></div>
                 <div className="flex items-center gap-3"><Users className="h-4 w-4 text-primary" /> <span>{event.participants} Max Participants</span></div>
                 {event.prize && (
-                  <div className="flex items-center gap-3 sm:col-span-2"><Trophy className="h-4 w-4 text-accent" /> <span className="font-semibold text-accent">Prize Pool: {event.prize}</span></div>
+                  <div className="flex items-center gap-3 sm:col-span-2"><Wallet className="h-4 w-4 text-accent" /> <span className="font-semibold text-accent">Registration Fees: {event.prize}</span></div>
                 )}
               </div>
             </CardContent>
@@ -228,9 +252,6 @@ const UpcomingEventsSection = ({ events, getEventTypeColor, getEventTypeIcon, ge
               <div className="w-full flex flex-col sm:flex-row gap-3 mt-4">
                 <Button variant="gaming" size="lg" className="flex-1 animate-bounce-in cursor-pointer" asChild>
                   <Link to="/register">Register Now</Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild className="animate-bounce-in" style={{ animationDelay: '100ms' }}>
-                  <Link to={import.meta.env.VITE_HACKATHON_APP_URL}>View Details</Link>
                 </Button>
               </div>
             </CardFooter>
