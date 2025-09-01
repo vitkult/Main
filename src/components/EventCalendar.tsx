@@ -160,10 +160,10 @@ const EventCalendar = () => {
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Button
                       variant={event.featured ? "gaming" : "electric"}
-                      className="flex-1 group w-full cursor-pointer hover:scale-[1.01] hover:shadow-md hover:shadow-primary/20 transition-all duration-300"
+                      className="flex-1 group w-full cursor-pointer hover:scale-[1.01] hover:shadow-md hover:shadow-primary/20 transition-all duration-300 cursor-pointer"
                       asChild
                     >
-                      <Link to="/hackathon">
+                      <Link to="/register">
                         Register Now
                         <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                       </Link>

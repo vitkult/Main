@@ -21,14 +21,29 @@ export const upcomingEvents = [
   {
     id: 1,
     title: "Agentic AI Hackathon 2025: Code the Future",
-    date: "2025-09-14",
-    time: "09:00 AM - 09:00 PM (24 Hours)",
-    location: "VIT Bhopal Main Campus",
-    type: "Hackathon",
+    date: "11-09-2025",
+    time: "1:10PM - 4:30PM",
+    location: "AB2 Auditorium 1, VIT Bhopal University",
+    type: "Tech Talk",
     participants: 400,
-    prize: "₹10,000",
+    prize: "Reveling Soon...",
     description:
-      "A 24-hour coding marathon where innovation meets competition. Join us to build groundbreaking solutions for real-world problems using agentic AI.",
+      "Unleash your coding prowess at Agentic AI Hackathon 2025! Join us for a thrilling 3-hour coding marathon where innovation meets competition. Collaborate, create, and conquer challenges to win exciting prizes and make your mark in the tech world.",
+    image: "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
+    status: "Registrations Open",
+    featured: true,
+  },
+  {
+    id: 2,
+    title: "House of Secrets(season-1) and red file (season -2)",
+    date: "12-09-2025",
+    time: "10:30PM-4:30PM",
+    location: "VIT Bhopal University",
+    type: "Gaming",
+    participants: 400,
+    prize: "Reveling Soon...",
+    description:
+      "Dive into the enigmatic world of 'House of Secrets' and 'Red File' at VIT Bhopal University. Unravel mysteries, solve puzzles, and embark on thrilling adventures in these immersive gaming experiences. Join us for a journey filled with suspense and excitement!",
     image: "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
     status: "Registrations Open",
     featured: true,
@@ -211,8 +226,8 @@ const UpcomingEventsSection = ({ events, getEventTypeColor, getEventTypeIcon, ge
             </CardContent>
             <CardFooter>
               <div className="w-full flex flex-col sm:flex-row gap-3 mt-4">
-                <Button variant="gaming" size="lg" className="flex-1 animate-bounce-in" asChild>
-                  <Link to="/hackathon">Register Now</Link>
+                <Button variant="gaming" size="lg" className="flex-1 animate-bounce-in cursor-pointer" asChild>
+                  <Link to="/register">Register Now</Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild className="animate-bounce-in" style={{ animationDelay: '100ms' }}>
                   <Link to={import.meta.env.VITE_HACKATHON_APP_URL}>View Details</Link>

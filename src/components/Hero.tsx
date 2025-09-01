@@ -173,11 +173,11 @@ const Hero = () => {
           <Button
             variant="outline"
             size="xl"
-            className="group border-2 border-primary text-primary hover:bg-primary hover:text-white"
+            className="group border-2 border-primary text-primary hover:bg-primary hover:text-white cursor-pointer"
             asChild
           >
-            <Link to="/hackathon">
-              <Code className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
+            <Link to="/register">
+              <Code className="h-6 w-6 group-hover:scale-110 transition-transform duration-300 cursor-pointer" />
               Register for Hackathon
             </Link>
           </Button>

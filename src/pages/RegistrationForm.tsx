@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SparkleButton from "../components/ui/SparkleButton";
 import Navigation from "@/components/Navigation";
 import {
@@ -24,6 +24,9 @@ import "./AnimatedBackground.css";
 import "./glow.css";
 
 function RegistrationForm() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
