@@ -8,6 +8,7 @@ import {
   FaIdCard,
   FaCreditCard,
   FaComment,
+  FaImage,
 } from "react-icons/fa";
 import {
   Dialog,
@@ -23,52 +24,91 @@ import "./AnimatedBackground.css";
 import "./glow.css";
 
 function RegistrationForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    regNo: "",
+    txnId: "",
+    feedback: "",
+    file: null,
+  });
   const [popupOpen, setPopupOpen] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const [popupError, setPopupError] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleInputChange(e) {
+    const { name, value, files } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: files ? files[0] : value,
+    }));
+  }
 
-    const form = e.target;
-    const name = form[0].value.trim();
-    const email = form[1].value.trim();
-    const phone = form[2].value.trim();
-    const regNo = form[3].value.trim();
-    const txnId = form[4].value.trim();
-    const feedback = form[5].value.trim();
+  
 
-    if (!name || !email || !phone || !regNo || !txnId) {
-      setPopupMessage("Please fill in all required fields.");
+  async function handleSubmit(e) {
+  e.preventDefault();
+
+  const { name, email, phone, regNo, txnId, feedback, file } = formData;
+
+  if (!name || !email || !phone || !regNo || !txnId || !file) {
+    setPopupMessage("Please fill in all required fields.");
+    setPopupError(true);
+    setPopupOpen(true);
+    return;
+  }
+
+  setLoading(true);
+
+  const url = import.meta.env.VITE_GOOGLE_SHEETS_API;
+
+  let base64File = "";
+  if (file) {
+    base64File = await toBase64(file);
+  }
+
+  const formPayload = new URLSearchParams();
+  formPayload.append("Name", name);
+  formPayload.append("Email", email);
+  formPayload.append("PhoneNumber", phone);
+  formPayload.append("RegistrationNumber", regNo);
+  formPayload.append("TransactionID", txnId);
+  formPayload.append("Feedback", feedback);
+  if (base64File) {
+    formPayload.append("file", base64File);
+  }
+
+  fetch(url, {
+    method: "POST",
+    body: formPayload,
+  })
+    .then((res) => res.text())
+    .then((data) => {
+      setPopupMessage("Form submitted successfully! " + data);
+      setPopupError(false);
+      setPopupOpen(true);
+      setFormData({ name: "", email: "", phone: "", regNo: "", txnId: "", feedback: "", file: null });
+    })
+    .catch((err) => {
+      setPopupMessage("Form submission failed. Please try again.");
       setPopupError(true);
       setPopupOpen(true);
-      return;
-    }
-
-    setLoading(true);
-
-    const url = import.meta.env.VITE_GOOGLE_SHEETS_API;
-    fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `Name=${name}&Email=${email}&PhoneNumber=${phone}&RegistrationNumber=${regNo}&TransactionID=${txnId}&Feedback=${feedback}`,
+      console.error(err);
     })
-      .then((res) => res.text())
-      .then((data) => {
-        setPopupMessage("Form submitted successfully! " + data);
-        setPopupError(false);
-        setPopupOpen(true);
-        form.reset();
-      })
-      .catch((err) => {
-        setPopupMessage("Form submission failed. Please try again.");
-        setPopupError(true);
-        setPopupOpen(true);
-        console.error(err);
-      })
-      .finally(() => setLoading(false));
-  }
+    .finally(() => setLoading(false));
+}
+
+function toBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result.split(",")[1]);
+    reader.onerror = (error) => reject(error);
+  });
+}
+
 
   return (
     <>
@@ -85,9 +125,7 @@ function RegistrationForm() {
       <Dialog open={popupOpen} onOpenChange={setPopupOpen}>
         <DialogContent className="bg-gray-900 text-white border border-gray-700">
           <DialogHeader>
-            <DialogTitle
-              className={popupError ? "text-red-400" : "text-green-400"}
-            >
+            <DialogTitle className={popupError ? "text-red-400" : "text-green-400"}>
               {popupError ? "Error" : "Success"}
             </DialogTitle>
             <DialogDescription className="text-gray-300 mt-2">
@@ -125,6 +163,9 @@ function RegistrationForm() {
               </label>
               <input
                 type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
                 placeholder="Enter your name"
                 className="input-glow w-full bg-gray-800/50 text-white p-3 rounded-lg border border-gray-700 placeholder:text-gray-500"
               />
@@ -137,6 +178,9 @@ function RegistrationForm() {
               </label>
               <input
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
                 placeholder="Enter your email"
                 className="input-glow w-full bg-gray-800/50 text-white p-3 rounded-lg border border-gray-700 placeholder:text-gray-500"
               />
@@ -149,6 +193,9 @@ function RegistrationForm() {
               </label>
               <input
                 type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
                 placeholder="Enter phone number"
                 maxLength={10}
                 className="input-glow w-full bg-gray-800/50 text-white p-3 rounded-lg border border-gray-700 placeholder:text-gray-500"
@@ -162,6 +209,9 @@ function RegistrationForm() {
               </label>
               <input
                 type="text"
+                name="regNo"
+                value={formData.regNo}
+                onChange={handleInputChange}
                 placeholder="Enter registration number(23BCExxxxx)"
                 className="input-glow w-full bg-gray-800/50 text-white p-3 rounded-lg border border-gray-700 placeholder:text-gray-500"
               />
@@ -174,6 +224,9 @@ function RegistrationForm() {
               </label>
               <input
                 type="text"
+                name="txnId"
+                value={formData.txnId}
+                onChange={handleInputChange}
                 placeholder="Enter transaction ID"
                 className="input-glow w-full bg-gray-800/50 text-white p-3 rounded-lg border border-gray-700 placeholder:text-gray-500"
               />
@@ -185,9 +238,30 @@ function RegistrationForm() {
                 <span className="text-gray-400 text-xs">(optional)</span>
               </label>
               <textarea
+                name="feedback"
+                value={formData.feedback}
+                onChange={handleInputChange}
                 placeholder="Write your feedback here..."
                 rows={4}
                 className="input-glow w-full bg-gray-800/50 text-white p-3 rounded-lg border border-gray-700 placeholder:text-gray-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1 flex items-center gap-2">
+                <FaImage className="text-green-400" /> Upload Photo
+                <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="file"
+                name="file"
+                onChange={handleInputChange}
+                accept="image/*"
+                className="file:mr-4 file:py-2 file:px-4
+                file:rounded-lg file:border-0
+                file:text-sm file:font-semibold
+                file:bg-blue-500 file:text-white
+                hover:file:bg-blue-600
+                w-full text-gray-300 mt-2"
               />
             </div>
 
