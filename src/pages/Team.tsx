@@ -104,9 +104,9 @@ const Team = () => {
       name: "Navnit",
       role: "Technical Co-Lead",
       category: "technical",
-      image: "https://www.dropbox.com/scl/fi/nken39pl7rdgescbgs0kg/Screenshot-2025-09-01-163917.png?rlkey=mxqykh7rh6682ahoauh74zfj3&st=12bweex4&raw=1",
+      image: "https://www.dropbox.com/scl/fi/vgb6qr7lbq4nhz1a26btf/Screenshot-2025-09-01-194758.png?rlkey=8smdhmb1c9qn3v2reudlfporh&st=yl97z12c&raw=1",
       bio: "Assisting in managing the technical aspects and digital presence of our events.",
-      skills: ["Web Development", "Front-end"],
+      skills: ["Web Development", "Full-Stack"],
       isFounder: false
     },
     {
@@ -116,7 +116,7 @@ const Team = () => {
       category: "technical",
       image: "https://www.dropbox.com/scl/fi/xstudozf9379b8v3otv2a/Screenshot-2025-09-01-174834.png?rlkey=yisaz5i80xwrld0clxf05nvmb&st=493d9kzo&raw=1",
       bio: "Assisting in managing the technical aspects and digital presence of our events.",
-      skills: ["Web Development", "Front-end"],
+      skills: ["Web Development", "Machine-learning"],
       isFounder: false
     },
     {
