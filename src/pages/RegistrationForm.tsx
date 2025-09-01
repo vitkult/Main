@@ -9,6 +9,7 @@ import {
   FaCreditCard,
   FaComment,
   FaImage,
+  FaCalendarCheck,
 } from "react-icons/fa";
 import {
   Dialog,
@@ -36,6 +37,10 @@ function RegistrationForm() {
     feedback: "",
     file: null,
   });
+  const [events, setEvents] = useState({
+    agenticAI: false,
+    houseOfSecrets: false,
+  });
   const [popupOpen, setPopupOpen] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const [popupError, setPopupError] = useState(false);
@@ -49,69 +54,78 @@ function RegistrationForm() {
     }));
   }
 
-  
+  function handleCheckboxChange(e) {
+    const { name, checked } = e.target;
+    setEvents((prevEvents) => ({
+      ...prevEvents,
+      [name]: checked,
+    }));
+  }
 
   async function handleSubmit(e) {
-  e.preventDefault();
+    e.preventDefault();
 
-  const { name, email, phone, regNo, txnId, feedback, file } = formData;
+    const { name, email, phone, regNo, txnId, feedback, file } = formData;
+    const { agenticAI, houseOfSecrets } = events;
 
-  if (!name || !email || !phone || !regNo || !txnId || !file) {
-    setPopupMessage("Please fill in all required fields.");
-    setPopupError(true);
-    setPopupOpen(true);
-    return;
-  }
-
-  setLoading(true);
-
-  const url = import.meta.env.VITE_GOOGLE_SHEETS_API;
-
-  let base64File = "";
-  if (file) {
-    base64File = await toBase64(file);
-  }
-
-  const formPayload = new URLSearchParams();
-  formPayload.append("Name", name);
-  formPayload.append("Email", email);
-  formPayload.append("PhoneNumber", phone);
-  formPayload.append("RegistrationNumber", regNo);
-  formPayload.append("TransactionID", txnId);
-  formPayload.append("Feedback", feedback);
-  if (base64File) {
-    formPayload.append("file", base64File);
-  }
-
-  fetch(url, {
-    method: "POST",
-    body: formPayload,
-  })
-    .then((res) => res.text())
-    .then((data) => {
-      setPopupMessage("Form submitted successfully! " + data);
-      setPopupError(false);
-      setPopupOpen(true);
-      setFormData({ name: "", email: "", phone: "", regNo: "", txnId: "", feedback: "", file: null });
-    })
-    .catch((err) => {
-      setPopupMessage("Form submission failed. Please try again.");
+    if (!name || !email || !phone || !regNo || !txnId || !file || (!agenticAI && !houseOfSecrets)) {
+      setPopupMessage("Please fill in all required fields and select at least one event.");
       setPopupError(true);
       setPopupOpen(true);
-      console.error(err);
+      return;
+    }
+
+    setLoading(true);
+
+    const url = import.meta.env.VITE_GOOGLE_SHEETS_API;
+
+    let base64File = "";
+    if (file) {
+      base64File = await toBase64(file);
+    }
+
+    const formPayload = new URLSearchParams();
+    formPayload.append("Name", name);
+    formPayload.append("Email", email);
+    formPayload.append("PhoneNumber", phone);
+    formPayload.append("RegistrationNumber", regNo);
+    formPayload.append("TransactionID", txnId);
+    formPayload.append("Feedback", feedback);
+    formPayload.append("AgenticAI", agenticAI ? "Yes" : "No");
+    formPayload.append("HouseOfSecrets", houseOfSecrets ? "Yes" : "No");
+    if (base64File) {
+      formPayload.append("file", base64File);
+    }
+
+    fetch(url, {
+      method: "POST",
+      body: formPayload,
     })
-    .finally(() => setLoading(false));
-}
+      .then((res) => res.text())
+      .then((data) => {
+        setPopupMessage("Form submitted successfully! " + data);
+        setPopupError(false);
+        setPopupOpen(true);
+        setFormData({ name: "", email: "", phone: "", regNo: "", txnId: "", feedback: "", file: null });
+        setEvents({ agenticAI: false, houseOfSecrets: false });
+      })
+      .catch((err) => {
+        setPopupMessage("Form submission failed. Please try again.");
+        setPopupError(true);
+        setPopupOpen(true);
+        console.error(err);
+      })
+      .finally(() => setLoading(false));
+  }
 
-function toBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result.split(",")[1]);
-    reader.onerror = (error) => reject(error);
-  });
-}
-
+  function toBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result.split(",")[1]);
+      reader.onerror = (error) => reject(error);
+    });
+  }
 
   return (
     <>
@@ -234,7 +248,41 @@ function toBase64(file) {
                 className="input-glow w-full bg-gray-800/50 text-white p-3 rounded-lg border border-gray-700 placeholder:text-gray-500"
               />
             </div>
-
+            {/* New section for checkboxes */}
+            <div className="border border-gray-700 p-4 rounded-lg bg-gray-800/50">
+              <label className="block text-sm font-medium mb-2 flex items-center gap-2">
+                <FaCalendarCheck className="text-purple-400" /> Registering for <span className="text-red-500">*</span>
+              </label>
+              <div className="space-y-2">
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="agenticAI"
+                    name="agenticAI"
+                    checked={events.agenticAI}
+                    onChange={handleCheckboxChange}
+                    className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-600 rounded"
+                  />
+                  <label htmlFor="agenticAI" className="ml-2 block text-gray-300">
+                    Agentic AI
+                  </label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id="houseOfSecrets"
+                    name="houseOfSecrets"
+                    checked={events.houseOfSecrets}
+                    onChange={handleCheckboxChange}
+                    className="h-4 w-4 text-purple-600 focus:ring-purple-500 border-gray-600 rounded"
+                  />
+                  <label htmlFor="houseOfSecrets" className="ml-2 block text-gray-300">
+                    House of Secrets & Red File
+                  </label>
+                </div>
+              </div>
+            </div>
+            {/* End of new section */}
             <div>
               <label className="block text-sm font-medium mb-1 flex items-center gap-2">
                 <FaComment className="text-blue-400" /> Feedback
