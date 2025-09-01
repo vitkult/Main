@@ -10,7 +10,7 @@ const Team = () => {
 
   const teamMembers = [
     {
-      id: 7,
+      id: 1,
       name: "Saravana Kumar S",
       role: "President",
       category: "founders",
@@ -20,7 +20,7 @@ const Team = () => {
       isFounder: true
     },
     {
-      id: 8,
+      id: 2,
       name: "Aditya Patil",
       role: "Vice President",
       category: "founders",
@@ -30,7 +30,7 @@ const Team = () => {
       isFounder: true
     },
     {
-      id: 9,
+      id: 3,
       name: "Vijay Prajwal J",
       role: "Secretary",
       category: "founders",
@@ -40,69 +40,39 @@ const Team = () => {
       isFounder: true
     },
     {
-      id: 10,
+      id: 4,
+      name: "Sanjana Kori",
+      role: "Acting Vice President",
+      category: "founders",
+      image: "https://www.dropbox.com/scl/fi/nbykiqpk9fc3h2x86ykyr/Sanjana_non_tech_lead.png?rlkey=pai06plr1td9nl7els89dxn1g&st=h941soqq&raw=1",
+      bio: "Supporting the president and coordinating various initiatives to ensure smooth operations.",
+      skills: ["Coordination", "Communication"],
+      isFounder: true
+    },
+    {
+      id: 34,
       name: "Sushanth",
       role: "Treasurer",
       category: "founders",
-      image: "https://www.dropbox.com/scl/fi/jh9mg34iszs1rsxwt42ov/Screenshot-2025-07-21-160709.png?rlkey=kxb4nvoigx3b4u5y33wgnx2sd&st=rncj6ztv&raw=1",
-      bio: "Responsible for managing all financial resources and budgeting for the team's activities.",
-      skills: ["Finance", "Budgeting"],
+      image: "https://www.dropbox.com/scl/fi/jh9mg34iszs1rsxwt42ov/Screenshot-2025-07-21-160709.png?rlkey=kxb4nvoigx3b4u5y33wgnx2sd&st=03p3i5sy&raw=1",
+      bio: "Manages the financial health and budget of the organization.",
+      skills: ["Finance", "Budgeting", "Accounting"],
       isFounder: true
     },
     {
-      id: 11,
-      name: "Nithin N",
-      role: "Technical Lead",
-      category: ["founders", "technical"],
-      image: "https://www.dropbox.com/scl/fi/h45l5yapfcawr5s7lqu92/Nithin.jpg?rlkey=uj35i5obzobm6e01o8cdyo0wq&st=6fkzynbt&raw=1",
-      bio: "Overseeing all technical operations and ensuring seamless execution of digital platforms.",
-      skills: ["Web Development", "Technical Leadership"],
-      isFounder: true
-    },
-    {
-      id: 12,
-      name: "Bharath N",
-      role: "Technical Co-Lead",
-      category: "technical",
-      image: "https://www.dropbox.com/scl/fi/hng4fnfc6ztgv8yf3eq2e/bharath_techteam_co_lead.jpg?rlkey=k4r64nur0bjjvrdres962ds6z&st=c12qaq4p&raw=1",
-      bio: "Assisting in managing the technical aspects and digital presence of our events.",
-      skills: ["Web Development", "Front-end"],
-      isFounder: false
-    },
-    {
-      id: 14,
-      name: "Shashank Salimath",
-      role: "Co-Founder",
-      category: "founders",
-      image: "https://www.dropbox.com/scl/fi/cyuyutpokd4k3pkyr3uys/Screenshot-2025-08-11-192851.png?rlkey=5m87i5l1ufml763iokbtn4k1s&st=rql7t91j&raw=1",
-      bio: "Co-founding member leading the coordination and execution of all club events, ensuring their success.",
-      skills: ["Event Planning", "Logistics"],
-      isFounder: true
-    },
-    {
-      id: 15,
-      name: "Jayanth CV",
-      role: "Event Management Co-Lead",
-      category: "event_and_design",
-      image: "https://www.dropbox.com/scl/fi/w7vhzizdevyxaexdqgonm/jayanth_event_team_colead.jpg?rlkey=ilbiuj1zipq8x3gfudmc27cev&st=wqpdu0a3&raw=1",
-      bio: "Collaborating on planning and executing memorable cultural events.",
-      skills: ["Event Planning", "Teamwork"],
-      isFounder: false
-    },
-    {
-      id: 16,
+      id: 5,
       name: "Aswin Pillai",
-      role: "Scheduling and Planning Leads",
-      category: "event_and_design",
-      image: "https://res.cloudinary.com/dvmmuj2r0/image/upload/f_auto,q_auto,w_400,h_400,c_fill/v1755108917/IMG_6462_tbukt3.heic",
-      bio: "Responsible for managing event timelines and logistics.",
+      role: "Scheduling and Planning Lead",
+      category: ["event_and_design", "management"],
+      image: "https://www.dropbox.com/scl/fi/j597fjlb9bcea7inq4p7k/Screenshot-2025-09-01-183443.png?rlkey=dfb1phqvw7wleyuyoand4amu7&st=t3vddtfo&raw=1",
+      bio: "Leading the scheduling and planning efforts to ensure a seamless flow of all events and activities.",
       skills: ["Scheduling", "Planning"],
       isFounder: false
     },
     {
-      id: 17,
+      id: 6,
       name: "Kanak Garg",
-      role: "Scheduling and Planning Leads",
+      role: "Scheduling and Planning Lead",
       category: "event_and_design",
       image: "https://www.dropbox.com/scl/fi/qe5l8u8a5v4mpa1raigbr/Screenshot-2025-07-21-153820.png?rlkey=nyasdc0mhd2m7i94d0dbtp431&st=txb1pjy2&raw=1",
       bio: "Ensuring effective scheduling and smooth planning for all activities.",
@@ -110,17 +80,87 @@ const Team = () => {
       isFounder: false
     },
     {
-      id: 18,
+      id: 7,
       name: "Charan Gowda DN",
-      role: "Scheduling and Planning Co-Lead",
-      category: "event_and_design",
+      role: "Acting Secretary and Co-Treasurer",
+      category: ["founders", "management"],
       image: "https://www.dropbox.com/scl/fi/2vqqyljs8fozusjh6v4h9/Screenshot-2025-07-21-153753.png?rlkey=lcnbdu83md292c9r507us79a8&st=pyu4l17j&raw=1",
-      bio: "Assisting in coordinating schedules and detailed planning.",
-      skills: ["Planning", "Coordination"],
+      bio: "Assisting in managing administrative and financial tasks for the team.",
+      skills: ["Finance", "Administration"],
+      isFounder: true
+    },
+    {
+      id: 8,
+      name: "Vishnu Nair",
+      role: "Technical Lead",
+      category: "technical",
+      image: "https://www.dropbox.com/scl/fi/ej9fyjknrlaoamqkjjoy7/Screenshot-2025-09-01-164937.png?rlkey=9kvslo3hldb37s6ktxowlcweh&st=ev4vikcg&raw=1",
+      bio: "Overseeing all technical operations and ensuring seamless execution of digital platforms.",
+      skills: ["Web Development", "Technical Leadership"],
       isFounder: false
     },
     {
-      id: 19,
+      id: 9,
+      name: "Navnit",
+      role: "Technical Co-Lead",
+      category: "technical",
+      image: "https://www.dropbox.com/scl/fi/nken39pl7rdgescbgs0kg/Screenshot-2025-09-01-163917.png?rlkey=mxqykh7rh6682ahoauh74zfj3&st=12bweex4&raw=1",
+      bio: "Assisting in managing the technical aspects and digital presence of our events.",
+      skills: ["Web Development", "Front-end"],
+      isFounder: false
+    },
+    {
+      id: 10,
+      name: "Sweta",
+      role: "Technical Co-Lead",
+      category: "technical",
+      image: "https://www.dropbox.com/scl/fi/xstudozf9379b8v3otv2a/Screenshot-2025-09-01-174834.png?rlkey=yisaz5i80xwrld0clxf05nvmb&st=493d9kzo&raw=1",
+      bio: "Assisting in managing the technical aspects and digital presence of our events.",
+      skills: ["Web Development", "Front-end"],
+      isFounder: false
+    },
+    {
+      id: 31,
+      name: "Anshika Mittal",
+      role: "Technical LinkedIn Initiative",
+      category: "technical",
+      image: "https://www.dropbox.com/scl/fi/fjch87fj3lyovhj8likdb/Screenshot-2025-09-01-180343.png?rlkey=ubga4sgf7ab595z3nu8h9z0f7&st=wpwk02y7&raw=1",
+      bio: "Leading the technical LinkedIn outreach to grow our professional network.",
+      skills: ["LinkedIn", "Networking", "Technical Writing"],
+      isFounder: false
+    },
+    {
+      id: 32,
+      name: "Murugavel",
+      role: "Technical Operations",
+      category: "technical",
+      image: "https://www.dropbox.com/scl/fi/6cyf3nn7zl2l39m5jilkx/Screenshot-2025-09-01-175844.png?rlkey=bka5hp73rhfn09hujbz147qq7&st=jfawzd05&raw=1",
+      bio: "Overseeing daily technical operations to ensure smooth workflow.",
+      skills: ["Operations", "System Management"],
+      isFounder: false
+    },
+    {
+      id: 33,
+      name: "Anjana Manoj",
+      role: "Technical Operations",
+      category: "technical",
+      image: "https://www.dropbox.com/scl/fi/d9oyemwpz0xgj0ewjlome/Screenshot-2025-09-01-180149.png?rlkey=avwgj4liabpqpshfsitpwg0cl&st=ti6x03ja&raw=1",
+      bio: "Assisting in technical operations and project coordination.",
+      skills: ["Operations", "Coordination"],
+      isFounder: false
+    },
+    {
+      id: 11,
+      name: "Jayanth CV",
+      role: "Event Management Lead",
+      category: "event_and_design",
+      image: "https://www.dropbox.com/scl/fi/w7vhzizdevyxaexdqgonm/jayanth_event_team_colead.jpg?rlkey=ilbiuj1zipq8x3gfudmc27cev&st=wqpdu0a3&raw=1",
+      bio: "Collaborating on planning and executing memorable cultural events.",
+      skills: ["Event Planning", "Teamwork"],
+      isFounder: false
+    },
+    {
+      id: 12,
       name: "Aldrin Jose Kurian",
       role: "Operations Leads",
       category: "event_and_design",
@@ -130,7 +170,7 @@ const Team = () => {
       isFounder: false
     },
     {
-      id: 20,
+      id: 13,
       name: "Chakritha Goud Korakoppula",
       role: "Operations Leads",
       category: "event_and_design",
@@ -140,7 +180,7 @@ const Team = () => {
       isFounder: false
     },
     {
-      id: 21,
+      id: 14,
       name: "Aditi Singh",
       role: "Operations Co-Lead",
       category: "event_and_design",
@@ -150,7 +190,7 @@ const Team = () => {
       isFounder: false
     },
     {
-      id: 23,
+      id: 15,
       name: "Megeshwara",
       role: "Media Lead",
       category: "event_and_design",
@@ -160,7 +200,7 @@ const Team = () => {
       isFounder: false
     },
     {
-      id: 24,
+      id: 16,
       name: "Vidhu Vinod",
       role: "Design Lead",
       category: "event_and_design",
@@ -170,7 +210,7 @@ const Team = () => {
       isFounder: false
     },
     {
-      id: 25,
+      id: 17,
       name: "Harsh Panchal",
       role: "Design Co-Leads",
       category: "event_and_design",
@@ -180,7 +220,7 @@ const Team = () => {
       isFounder: false
     },
     {
-      id: 26,
+      id: 18,
       name: "Rishi Raj",
       role: "Design Co-Leads",
       category: "event_and_design",
@@ -190,7 +230,7 @@ const Team = () => {
       isFounder: false
     },
     {
-      id: 27,
+      id: 19,
       name: "Aeganathen Sai",
       role: "Discipline Lead",
       category: "management",
@@ -200,7 +240,7 @@ const Team = () => {
       isFounder: false
     },
     {
-      id: 28,
+      id: 20,
       name: "Navya Pillai",
       role: "Content Leads",
       category: "event_and_design",
@@ -210,7 +250,7 @@ const Team = () => {
       isFounder: false
     },
     {
-      id: 29,
+      id: 21,
       name: "Vansh Vardhan",
       role: "Content Leads",
       category: "event_and_design",
@@ -220,7 +260,7 @@ const Team = () => {
       isFounder: false
     },
     {
-      id: 30,
+      id: 22,
       name: "San Maria Job",
       role: "Content Co-Lead",
       category: "event_and_design",
@@ -230,7 +270,7 @@ const Team = () => {
       isFounder: false
     },
     {
-      id: 31,
+      id: 23,
       name: "Shanmugha Priya",
       role: "PR and Outreach Lead",
       category: "management",
@@ -240,7 +280,7 @@ const Team = () => {
       isFounder: false
     },
     {
-      id: 32,
+      id: 24,
       name: "Akshat Singh Tomar",
       role: "PR and Outreach Co-Lead",
       category: "management",
@@ -249,16 +289,6 @@ const Team = () => {
       skills: ["Public Relations", "Partnerships"],
       isFounder: false
     },
-    {
-      id: 33,
-      name: "Sanjana",
-      role: "Social Media Manager",
-      category: "event_and_design",
-      image: "https://www.dropbox.com/scl/fi/nbykiqpk9fc3h2x86ykyr/Sanjana_non_tech_lead.png?rlkey=pai06plr1td9nl7els89dxn1g&st=h941soqq&raw=1",
-      bio: "Handling all social media platforms and engaging with our online community.",
-      skills: ["Social Media", "Marketing"],
-      isFounder: false
-    }
   ];
 
   const categories = [
@@ -266,16 +296,16 @@ const Team = () => {
     { id: "founders", name: "Founders", icon: "👑" },
     { id: "technical", name: "Technical", icon: "💻" },
     { id: "event_and_design", name: "Event & Design", icon: "🎨" },
-    { id: "management", name: "Management", icon: "📊" }
+    { id: "management", name: "Management", icon: "📊" },
   ];
 
   const filteredMembers = activeCategory === "all"
     ? teamMembers
-    : teamMembers.filter(member => 
-        Array.isArray(member.category) 
-          ? member.category.includes(activeCategory) 
-          : member.category === activeCategory
-      );
+    : teamMembers.filter(member =>
+      Array.isArray(member.category)
+        ? member.category.includes(activeCategory)
+        : member.category === activeCategory
+    );
 
   const founders = teamMembers.filter(member => member.isFounder);
 
@@ -291,7 +321,7 @@ const Team = () => {
             </h1>
             <p className="text-xl text-muted-foreground animate-fade-in">
               Meet the team working on and behind the scenes at VITKULT.
-              Passionate minds, Creative thinkers and Cultural trailblazers who
+              Passionately minds, Creative thinkers and Cultural trailblazers who
               turn dreams into reality!
             </p>
           </div>
@@ -331,8 +361,8 @@ const Team = () => {
                   </div>
                   {/* Bio */}
                   <p className="text-sm text-muted-foreground text-center mb-4 leading-relaxed animate-fade-in">
-                    {member.bio}
-                  </p>
+                      {member.bio}
+                    </p>
                 </div>
               </Card>
             ))}
