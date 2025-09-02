@@ -46,6 +46,11 @@ function RegistrationForm() {
     teamMember3Email: "",
     teamMember4Email: "",
     teamMember5Email: "",
+    teamMember1Name: "", // Add this
+    teamMember2Name: "", // Add this
+    teamMember3Name: "", // Add this
+    teamMember4Name: "", // Add this
+    teamMember5Name: "", // Add this
     referralCode: "",
   });
 
@@ -55,10 +60,10 @@ function RegistrationForm() {
   const [loading, setLoading] = useState(false);
 
   const teamMembers = [
-    { email: "teamMember2Email" },
-    { email: "teamMember3Email" },
-    { email: "teamMember4Email" },
-    { email: "teamMember5Email" },
+    { email: "teamMember2Email", name: "teamMember2Name" },
+    { email: "teamMember3Email", name: "teamMember3Name" },
+    { email: "teamMember4Email", name: "teamMember4Name" },
+    { email: "teamMember5Email", name: "teamMember5Name" },
   ];
 
   function handleInputChange(e) {
@@ -90,6 +95,7 @@ function RegistrationForm() {
       if (formData.teamSize > 1) {
         for (let i = 2; i <= formData.teamSize; i++) {
           requiredFields.push(`teamMember${i}Email`);
+          requiredFields.push(`teamMember${i}Name`); // Add this
         }
       }
     }
@@ -127,6 +133,7 @@ function RegistrationForm() {
           teamMembers[i].email,
           formData[teamMembers[i].email]
         );
+        formPayload.append(teamMembers[i].name, formData[teamMembers[i].name]); // Add this
       }
     }
     formPayload.append("referralCode", formData.referralCode);
@@ -145,6 +152,7 @@ function RegistrationForm() {
         setPopupMessage("Form submitted successfully! " + data);
         setPopupError(false);
         setPopupOpen(true);
+        // Reset form fields, including the new name fields
         setFormData({
           name: "",
           regNo: "",
@@ -160,6 +168,11 @@ function RegistrationForm() {
           teamMember3Email: "",
           teamMember4Email: "",
           teamMember5Email: "",
+          teamMember1Name: "", // Add this
+          teamMember2Name: "", // Add this
+          teamMember3Name: "", // Add this
+          teamMember4Name: "", // Add this
+          teamMember5Name: "", // Add this
           referralCode: "",
         });
       })
@@ -359,27 +372,47 @@ function RegistrationForm() {
                     </select>
                   </div>
                 </div>
-                {/* Team Member Emails */}
+
+                {/* Team Member Emails and Names */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {Array.from({ length: formData.teamSize - 1 }).map(
                     (_, index) => (
-                      <div key={index}>
-                        <label className="block text-sm font-medium mb-1 flex items-center gap-2 text-gray-200">
-                          <FaUser className="text-blue-400" /> Team Member{" "}
-                          {index + 2} Email{" "}
-                          <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="email"
-                          name={`teamMember${index + 2}Email`}
-                          value={formData[`teamMember${index + 2}Email`]}
-                          onChange={handleInputChange}
-                          placeholder={`Enter email for Team Member ${
-                            index + 2
-                          }`}
-                          className="input-glow w-full bg-gray-800/50 text-white p-3 rounded-lg border border-gray-700 placeholder:text-gray-500 focus:ring-2 focus:ring-blue-500 transition-all"
-                        />
-                      </div>
+                      <React.Fragment key={index}>
+                        <div>
+                          <label className="block text-sm font-medium mb-1 flex items-center gap-2 text-gray-200">
+                            <FaUser className="text-blue-400" /> Team Member{" "}
+                            {index + 2} Name{" "}
+                            <span className="text-red-500">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            name={`teamMember${index + 2}Name`}
+                            value={formData[`teamMember${index + 2}Name`]}
+                            onChange={handleInputChange}
+                            placeholder={`Enter name for Team Member ${
+                              index + 2
+                            }`}
+                            className="input-glow w-full bg-gray-800/50 text-white p-3 rounded-lg border border-gray-700 placeholder:text-gray-500 focus:ring-2 focus:ring-blue-500 transition-all"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium mb-1 flex items-center gap-2 text-gray-200">
+                            <FaEnvelope className="text-blue-400" /> Team Member{" "}
+                            {index + 2} Email{" "}
+                            <span className="text-red-500">*</span>
+                          </label>
+                          <input
+                            type="email"
+                            name={`teamMember${index + 2}Email`}
+                            value={formData[`teamMember${index + 2}Email`]}
+                            onChange={handleInputChange}
+                            placeholder={`Enter email for Team Member ${
+                              index + 2
+                            }`}
+                            className="input-glow w-full bg-gray-800/50 text-white p-3 rounded-lg border border-gray-700 placeholder:text-gray-500 focus:ring-2 focus:ring-blue-500 transition-all"
+                          />
+                        </div>
+                      </React.Fragment>
                     )
                   )}
                 </div>
