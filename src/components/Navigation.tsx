@@ -72,7 +72,7 @@ const Navigation = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setShowKannada(prev => !prev);
-    }, 3000); // Slower transition - 3 seconds instead of 1.5
+    }, 3000);
     
     return () => clearInterval(interval);
   }, []);
@@ -106,8 +106,8 @@ const Navigation = () => {
           color: '#e2e8f0'
         }}>
           ವಿಟ್<span className="text-primary font-black" style={{
-            textShadow: '0 0 15px rgba(59, 130, 246, 0.8), 0 0 25px rgba(59, 130, 246, 0.4)',
-            color: '#3b82f6'
+            textShadow: '0 0 15px rgb(255, 155, 0), 0 0 25px rgb(255, 155, 0)',
+            color: 'rgb(255, 155, 0)'
           }}>ಕ</span>ಲ್ಟ್
         </span>
         <span className={`absolute inset-0 text-2xl font-extrabold tracking-wider transition-all duration-1000 ease-in-out ${
@@ -116,13 +116,13 @@ const Navigation = () => {
             : "text-gradient-primary opacity-100 translate-y-0"
         }`} style={{
           fontFamily: '"Rajdhani", "Orbitron", "Exo 2", sans-serif',
-          textShadow: '0 0 12px rgba(59, 130, 246, 0.5)',
+          textShadow: '0 0 12px rgb(255, 155, 0)',
           letterSpacing: '0.05em',
           color: '#e2e8f0'
         }}>
           VIT<span className="text-primary font-black" style={{
-            textShadow: '0 0 15px rgba(59, 130, 246, 0.8), 0 0 25px rgba(59, 130, 246, 0.4)',
-            color: '#3b82f6',
+            textShadow: '0 0 15px rgb(255, 155, 0), 0 0 25px rgb(255, 155, 0)',
+            color: 'rgb(255, 155, 0)',
             fontSize: '1.1em'
           }}>K</span>ULT
         </span>
