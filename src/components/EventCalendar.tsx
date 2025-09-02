@@ -112,11 +112,11 @@ const EventCalendar = () => {
                         {event.featured && (
                           <Star className="h-5 w-5 text-accent fill-current drop-shadow-md" />
                         )}
-                        <h3 className="text-2xl font-bold text-foreground group-hover:text-electric transition-colors">
+                        <h3 className="text-xl font-bold text-foreground group-hover:text-electric transition-colors">
                           {event.title}
                         </h3>
                       </div>
-                      <p className="text-muted-foreground text-xs leading-[1.5]">
+                      <p className="text-muted-foreground leading-relaxed !text-sm">
                         {event.description}
                       </p>
                     </div>
@@ -130,7 +130,7 @@ const EventCalendar = () => {
                   </div>
 
                   {/* Event Details */}
-                  <div className="space-y-4 mb-8">
+                  <div className="space-y-4 mb-8 !text-xs">
                     <div className="flex items-center gap-3 text-muted-foreground">
                       <Calendar className="h-5 w-5 text-primary flex-shrink-0" />
                       <span>
