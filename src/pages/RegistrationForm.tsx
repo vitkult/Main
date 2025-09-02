@@ -7,11 +7,11 @@ import {
   FaPhone,
   FaIdCard,
   FaCreditCard,
-  FaComment,
   FaImage,
   FaCalendarCheck,
   FaUsers,
   FaTag,
+  FaFilePdf,
 } from "react-icons/fa";
 import {
   Dialog,
@@ -25,6 +25,8 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import "./AnimatedBackground.css";
 import "./glow.css";
+
+const QR_CODE_IMG_PATH = "/Payment-QR.png";
 
 function RegistrationForm() {
   useEffect(() => {
@@ -46,15 +48,16 @@ function RegistrationForm() {
     teamMember3Email: "",
     teamMember4Email: "",
     teamMember5Email: "",
-    teamMember1Name: "", // Add this
-    teamMember2Name: "", // Add this
-    teamMember3Name: "", // Add this
-    teamMember4Name: "", // Add this
-    teamMember5Name: "", // Add this
+    teamMember1Name: "",
+    teamMember2Name: "",
+    teamMember3Name: "",
+    teamMember4Name: "",
+    teamMember5Name: "",
     referralCode: "",
   });
 
   const [popupOpen, setPopupOpen] = useState(false);
+  const [qrPopupOpen, setQrPopupOpen] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const [popupError, setPopupError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -65,6 +68,19 @@ function RegistrationForm() {
     { email: "teamMember4Email", name: "teamMember4Name" },
     { email: "teamMember5Email", name: "teamMember5Name" },
   ];
+
+  const PRICES = {
+    "House of Secrets": 80,
+    "Generative and Agentic AI": 50,
+    "Both Events": 130,
+  };
+
+  const calculatedPrice =
+    PRICES[formData.eventChoice] *
+    (formData.eventChoice === "House of Secrets" ||
+    formData.eventChoice === "Both Events"
+      ? formData.teamSize
+      : 1);
 
   function handleInputChange(e) {
     const { name, value, files } = e.target;
@@ -95,7 +111,7 @@ function RegistrationForm() {
       if (formData.teamSize > 1) {
         for (let i = 2; i <= formData.teamSize; i++) {
           requiredFields.push(`teamMember${i}Email`);
-          requiredFields.push(`teamMember${i}Name`); // Add this
+          requiredFields.push(`teamMember${i}Name`); 
         }
       }
     }
@@ -133,7 +149,7 @@ function RegistrationForm() {
           teamMembers[i].email,
           formData[teamMembers[i].email]
         );
-        formPayload.append(teamMembers[i].name, formData[teamMembers[i].name]); // Add this
+        formPayload.append(teamMembers[i].name, formData[teamMembers[i].name]); 
       }
     }
     formPayload.append("referralCode", formData.referralCode);
@@ -152,7 +168,7 @@ function RegistrationForm() {
         setPopupMessage("Form submitted successfully! " + data);
         setPopupError(false);
         setPopupOpen(true);
-        // Reset form fields, including the new name fields
+
         setFormData({
           name: "",
           regNo: "",
@@ -168,11 +184,11 @@ function RegistrationForm() {
           teamMember3Email: "",
           teamMember4Email: "",
           teamMember5Email: "",
-          teamMember1Name: "", // Add this
-          teamMember2Name: "", // Add this
-          teamMember3Name: "", // Add this
-          teamMember4Name: "", // Add this
-          teamMember5Name: "", // Add this
+          teamMember1Name: "", 
+          teamMember2Name: "", 
+          teamMember3Name: "", 
+          teamMember4Name: "", 
+          teamMember5Name: "", 
           referralCode: "",
         });
       })
@@ -230,6 +246,28 @@ function RegistrationForm() {
         </DialogContent>
       </Dialog>
 
+      {/* QR Code Popup Dialog */}
+      <Dialog open={qrPopupOpen} onOpenChange={setQrPopupOpen}>
+        <DialogContent className="bg-gray-900 text-white border border-gray-700 p-6 rounded-lg shadow-lg">
+          <div className="flex justify-center my-4">
+            <img
+              src={QR_CODE_IMG_PATH}
+              alt="QR Code for Payment"
+              className="max-w-full h-auto"
+              style={{ maxHeight: "75vh" }}
+            />
+          </div>
+          <DialogFooter className="mt-6 flex justify-end">
+            <Button
+              onClick={() => setQrPopupOpen(false)}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition-colors duration-200"
+            >
+              Close
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
       <div className="min-h-screen flex flex-col items-center justify-start py-16 px-4 sm:px-6 relative z-10">
         <motion.form
           onSubmit={handleSubmit}
@@ -257,7 +295,7 @@ function RegistrationForm() {
               >
                 <option value="">Select an event</option>
                 <option value="Generative and Agentic AI">
-                  Generative and Agentic AI
+                  Generative and Agentic AI Session + Workshop
                 </option>
                 <option value="House of Secrets">
                   House of Secrets + The Red File
@@ -440,7 +478,31 @@ function RegistrationForm() {
               <h3 className="text-2xl font-bold text-white border-b border-gray-700 pb-2">
                 Payment Details
               </h3>
+              {/* Price Field */}
+              {formData.eventChoice && (
+                <div className="border border-gray-700 p-5 mt-4 rounded-xl bg-gray-800/50 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <FaCreditCard className="text-yellow-400 text-lg" />
+                    <span className="text-white font-semibold text-lg">
+                      Total Price:
+                    </span>
+                  </div>
+                  <div className="text-2xl font-bold text-yellow-300">
+                    Rs. {calculatedPrice}
+                  </div>
+                </div>
+              )}
               <div className="space-y-6 mt-4">
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => setQrPopupOpen(true)}
+                    className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200"
+                  >
+                    <FaFilePdf className="mr-2 h-5 w-5" />
+                    Show Payment QR Code
+                  </button>
+                </div>
                 <div>
                   <label className="block text-sm font-medium mb-1 flex items-center gap-2 text-gray-200">
                     <FaCreditCard className="text-blue-400" /> Enter UTR Number{" "}
