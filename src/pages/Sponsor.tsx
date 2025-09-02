@@ -24,7 +24,7 @@ const Sponsor = () => {
     {
       name: "Title Sponsor",
       icon: Crown,
-      price: "₹5,00,000",
+      price: "",
       color: "accent",
       featured: true,
       benefits: [
@@ -41,7 +41,7 @@ const Sponsor = () => {
     {
       name: "Gold Sponsor",
       icon: Star,
-      price: "₹3,00,000",
+      price: "",
       color: "primary",
       featured: false,
       benefits: [
@@ -57,7 +57,7 @@ const Sponsor = () => {
     {
       name: "Silver Sponsor",
       icon: Zap,
-      price: "₹1,50,000",
+      price: "",
       color: "secondary",
       featured: false,
       benefits: [
@@ -72,7 +72,7 @@ const Sponsor = () => {
     {
       name: "Event Sponsor",
       icon: Heart,
-      price: "₹75,000",
+      price: "",
       color: "success",
       featured: false,
       benefits: [
@@ -87,12 +87,12 @@ const Sponsor = () => {
   ];
 
   const currentSponsors = [
-    { name: "Audly.Ai", logo: "/placeholder.svg", tier: "Title Sponsor", partnership: "1 year" }
+    { name: "You Can Be The First One", logo: "/placeholder.svg", tier: "Sponsor", partnership: "" }
   ];
 
   const metrics = [
     { value: "500+", label: "Active Members", icon: Users },
-    { value: "10M+", label: "Social Media Reach", icon: Eye },
+    { value: "10K+", label: "Social Media Reach", icon: Eye },
     { value: "95%", label: "Placement Rate", icon: TrendingUp },
     { value: "50+", label: "Events Annually", icon: Target }
   ];

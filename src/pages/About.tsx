@@ -18,31 +18,31 @@ import {
 const About = () => {
   const milestones = [
     {
-      year: "2020",
+      year: "2025",
       title: "Club Foundation",
       description: "VITKULT was born with a vision to revolutionize tech culture at VIT Bhopal",
       icon: Rocket
     },
     {
-      year: "2021",
+      year: "2025",
       title: "First Hackathon",
       description: "Organized our inaugural hackathon with 200+ participants",
       icon: Code
     },
     {
-      year: "2022",
+      year: "2025",
       title: "Gaming Division",
       description: "Launched competitive gaming division with esports tournaments",
       icon: Gamepad2
     },
     {
-      year: "2023",
-      title: "1000+ Members",
-      description: "Crossed the milestone of 1000 active community members",
+      year: "2025",
+      title: "500+ Members",
+      description: "Crossed the milestone of 500 active community members",
       icon: Users
     },
     {
-      year: "2024",
+      year: "2025",
       title: "Industry Recognition",
       description: "Received awards for outstanding contribution to tech education",
       icon: Award
@@ -203,9 +203,9 @@ const About = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { number: "500+", label: "Active Members", icon: Users },
-              { number: "50+", label: "Projects Completed", icon: Code },
-              { number: "25+", label: "Events Hosted", icon: Calendar },
-              { number: "10+", label: "Awards Won", icon: Trophy }
+              { number: "5+", label: "Projects Completed", icon: Code },
+              { number: "1+", label: "Events Hosted", icon: Calendar },
+              { number: "0+", label: "Awards Won", icon: Trophy }
             ].map((stat, index) => {
               const Icon = stat.icon;
               return (
@@ -241,7 +241,7 @@ const About = () => {
               </div>
               <div className="flex items-center justify-center space-x-3">
                 <Calendar className="h-6 w-6 text-primary" />
-                <span className="text-muted-foreground">Meetings: Every Saturday 4 PM</span>
+                <span className="text-muted-foreground">Meetings: Every Thursday 2 PM</span>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
