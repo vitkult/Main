@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Award } from "lucide-react";
@@ -6,6 +6,9 @@ import Navigation from "@/components/Navigation";
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 
 const Team = () => {
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   const [activeCategory, setActiveCategory] = useState("all");
 
  const teamMembers = [
@@ -29,6 +32,17 @@ const Team = () => {
     skills: ["Coordination", "Communication"],
     isFounder: true
   },
+  
+  {
+    id: 25,
+    name: "Sanjana Kori",
+    role: "Acting Vice President",
+    category: "management",
+    image: "https://www.dropbox.com/scl/fi/nbykiqpk9fc3h2x86ykyr/Sanjana_non_tech_lead.png?rlkey=pai06plr1td9nl7els89dxn1g&st=h941soqq&raw=1",
+    bio: "Supporting the president and coordinating various initiatives to ensure smooth operations.",
+    skills: ["Coordination", "Communication"],
+    isFounder: false
+  },
   {
     id: 3,
     name: "Vijay Prajwal J",
@@ -39,16 +53,7 @@ const Team = () => {
     skills: ["Administration", "Documentation"],
     isFounder: true
   },
-  {
-    id: 4,
-    name: "Shashank Shalimath",
-    role: "Event Management Lead",
-    category: ["founders", "event_and_design"],
-    image: "https://www.dropbox.com/scl/fi/cyuyutpokd4k3pkyr3uys/Screenshot-2025-08-11-192851.png?rlkey=5m87i5l1ufml763iokbtn4k1s&st=kml6o300&raw=1",
-    bio: "Managing cultural events and fostering a vibrant community spirit.",
-    skills: ["Event Planning", "Teamwork"],
-    isFounder: true
-  },
+  
   {
     id: 34,
     name: "Sushanth",
@@ -60,34 +65,14 @@ const Team = () => {
     isFounder: true
   },
   {
-    id: 5,
-    name: "Aswin Pillai",
-    role: "Scheduling and Planning Lead",
-    category: ["event_and_design", "management"],
-    image: "https://www.dropbox.com/scl/fi/j597fjlb9bcea7inq4p7k/Screenshot-2025-09-01-183443.png?rlkey=dfb1phqvw7wleyuyoand4amu7&st=t3vddtfo&raw=1",
-    bio: "Leading the scheduling and planning efforts to ensure a seamless flow of all events and activities.",
-    skills: ["Scheduling", "Planning"],
-    isFounder: false
-  },
-  {
-    id: 6,
-    name: "Kanak Garg",
-    role: "Scheduling and Planning Lead",
-    category: "event_and_design",
-    image: "https://www.dropbox.com/scl/fi/qe5l8u8a5v4mpa1raigbr/Screenshot-2025-07-21-153820.png?rlkey=nyasdc0mhd2m7i94d0dbtp431&st=txb1pjy2&raw=1",
-    bio: "Ensuring effective scheduling and smooth planning for all activities.",
-    skills: ["Scheduling", "Planning"],
-    isFounder: false
-  },
-  {
     id: 7,
     name: "Charan Gowda DN",
     role: "Acting Secretary and Co-Treasurer",
-    category: ["founders", "management"],
+    category: ["management"],
     image: "https://www.dropbox.com/scl/fi/2vqqyljs8fozusjh6v4h9/Screenshot-2025-07-21-153753.png?rlkey=lcnbdu83md292c9r507us79a8&st=pyu4l17j&raw=1",
     bio: "Assisting in managing administrative and financial tasks for the team.",
     skills: ["Finance", "Administration"],
-    isFounder: true
+    isFounder: false
   },
   {
     id: 8,
@@ -153,10 +138,40 @@ const Team = () => {
     id: 11,
     name: "Jayanth CV",
     role: "Event Management Lead",
-    category: "event_and_design",
+    category: ["founders", "event_and_design"],
     image: "https://www.dropbox.com/scl/fi/w7vhzizdevyxaexdqgonm/jayanth_event_team_colead.jpg?rlkey=ilbiuj1zipq8x3gfudmc27cev&st=wqpdu0a3&raw=1",
     bio: "Collaborating on planning and executing memorable cultural events.",
     skills: ["Event Planning", "Teamwork"],
+    isFounder: true
+  },
+  {
+    id: 4,
+    name: "Shashank Shalimath",
+    role: "Event Management Lead",
+    category: ["founders", "event_and_design"],
+    image: "https://www.dropbox.com/scl/fi/cyuyutpokd4k3pkyr3uys/Screenshot-2025-08-11-192851.png?rlkey=5m87i5l1ufml763iokbtn4k1s&st=kml6o300&raw=1",
+    bio: "Managing cultural events and fostering a vibrant community spirit.",
+    skills: ["Event Planning", "Teamwork"],
+    isFounder: true
+  },  
+  {
+    id: 5,
+    name: "Aswin Pillai",
+    role: "Scheduling and Planning Lead",
+    category: ["event_and_design", "management"],
+    image: "https://www.dropbox.com/scl/fi/j597fjlb9bcea7inq4p7k/Screenshot-2025-09-01-183443.png?rlkey=dfb1phqvw7wleyuyoand4amu7&st=t3vddtfo&raw=1",
+    bio: "Leading the scheduling and planning efforts to ensure a seamless flow of all events and activities.",
+    skills: ["Scheduling", "Planning"],
+    isFounder: false
+  },
+  {
+    id: 6,
+    name: "Kanak Garg",
+    role: "Scheduling and Planning Lead",
+    category: "event_and_design",
+    image: "https://www.dropbox.com/scl/fi/qe5l8u8a5v4mpa1raigbr/Screenshot-2025-07-21-153820.png?rlkey=nyasdc0mhd2m7i94d0dbtp431&st=txb1pjy2&raw=1",
+    bio: "Ensuring effective scheduling and smooth planning for all activities.",
+    skills: ["Scheduling", "Planning"],
     isFounder: false
   },
   {
@@ -287,16 +302,6 @@ const Team = () => {
     image: "https://www.dropbox.com/scl/fi/8ufyfl7lb9ud82irmgygs/Screenshot-2025-07-21-151751.png?rlkey=dz0949vzj8j8myiwo9cebjp8u&st=wu5tkogg&raw=1",
     bio: "Supporting PR efforts and fostering external partnerships.",
     skills: ["Public Relations", "Partnerships"],
-    isFounder: false
-  },
-  {
-    id: 25,
-    name: "Sanjana Kori",
-    role: "Acting Vice President",
-    category: "management",
-    image: "https://www.dropbox.com/scl/fi/nbykiqpk9fc3h2x86ykyr/Sanjana_non_tech_lead.png?rlkey=pai06plr1td9nl7els89dxn1g&st=h941soqq&raw=1",
-    bio: "Supporting the president and coordinating various initiatives to ensure smooth operations.",
-    skills: ["Coordination", "Communication"],
     isFounder: false
   },
 ];

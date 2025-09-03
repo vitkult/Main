@@ -116,7 +116,7 @@ const EventCalendar = () => {
                           {event.title}
                         </h3>
                       </div>
-                      <p className="text-muted-foreground leading-relaxed !text-sm">
+                      <p className="text-muted-foreground leading-relaxed !text-sm text-justify">
                         {event.description}
                       </p>
                     </div>
@@ -133,9 +133,7 @@ const EventCalendar = () => {
                   <div className="space-y-4 mb-8 !text-xs">
                     <div className="flex items-center gap-3 text-muted-foreground">
                       <Calendar className="h-5 w-5 text-primary flex-shrink-0" />
-                      <span>
-                        {event.date}
-                      </span>
+                      <span>{event.date}</span>
                     </div>
                     <div className="flex items-center gap-3 text-muted-foreground">
                       <Clock className="h-5 w-5 text-primary flex-shrink-0" />
@@ -196,7 +194,7 @@ const EventCalendar = () => {
           <Button
             variant="hologram"
             size="lg"
-            className="group px-8 py-4 rounded-full"
+            className="group px-8 py-4 rounded-full cursor-pointer"
             asChild
           >
             <Link to="/events">

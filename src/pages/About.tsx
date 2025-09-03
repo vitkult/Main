@@ -16,8 +16,12 @@ import {
   Linkedin,
   Instagram
 } from "lucide-react";
+import { useEffect } from "react";
 
 const About = () => {
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   // const milestones = [
   //   {
   //     year: "2025",
@@ -218,7 +222,7 @@ const About = () => {
             {[
               { number: "100+", label: "Active Members", icon: Users },
               { number: "5+", label: "Projects Completed", icon: Code },
-              { number: "4+", label: "Events Hosted", icon: Calendar },
+              { number: "1+", label: "Events Hosted", icon: Calendar },
               { number: "0+", label: "Awards Won", icon: Trophy }
             ].map((stat, index) => {
               const Icon = stat.icon;

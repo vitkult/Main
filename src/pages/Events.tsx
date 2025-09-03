@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -23,39 +23,6 @@ import { Certificate } from "crypto";
 export const upcomingEvents = [
   {
     id: 1,
-    title: "BOTH : Generative and Agentic AI Session + Workshop AND Event Season 1 - House Of Secrets + Season 2 - The Red File ",
-    date: "Sept 11th 2025, Thursday AND Sept 12th 2025, Thursday",
-    time: "1:30PM to - 5:00PM AND  10:00AM to - 5:00PM",
-    location: "Auditorium 1, Academic Block 2 AND Auditorium 1, Academic Block 1",
-    type: "Gaming",
-    participants: 400,
-    prize: "Rs 130   Per Participant,  Rs 650 per Full Team",
-    description:
-      "Speaker - Mr. Hari Prasad R CEO and Founder, DeepinsigthsX Gen AI Strategist, LLM System Architect, Author Of 3 AI Books Berlin, Germany AND Dive into the enigmatic world of 'House of Secrets' and 'Red File' at VIT Bhopal University. Unravel mysteries, solve puzzles, and embark on thrilling adventures in these immersive gaming experiences. Join us for a journey filled with suspense and excitement!",
-    image: "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
-    status: "Registrations Open",
-    featured: true,
-    link: ""
-  },
-  {
-    id: 2,
-    title: "Generative and Agentic AI Session + Workshop",
-    date: "Sept 11th 2025, Thursday",
-    time: "1:30PM to - 5:00PM",
-    location: "Auditorium 1, Academic Block 2",
-    type: "Tech Talk",
-    participants: 400,
-    prize: "Rupees 50  per participant",
-    Certificate: "Certificates will be provided to all the Participants",
-    description:
-      "Speaker - Mr. Hari Prasad R CEO and Founder, DeepinsigthsX Gen AI Strategist, LLM System Architect, Author Of 3 AI Books Berlin, Germany",
-    image: "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
-    status: "Registrations Open",
-    featured: true,
-    link: ""
-  },
-  {
-    id: 3,
     title: "Event Season 1 - House Of Secrets + Season 2 - The Red File ",
     date: "Sept 12th 2025, Thursday",
     time: "10:00AM to - 5:00PM",
@@ -70,6 +37,41 @@ export const upcomingEvents = [
     featured: true,
     link: "https://docs.google.com/forms/d/1v289vkG0wyyN0qnMAjabZesSGB0p6dk_RPeRw0wSIvA/edit?ts=68b7c273"
   },
+  {
+    id: 2,
+    title: "Generative and Agentic AI Session + Workshop",
+    date: "Sept 11th 2025, Thursday",
+    time: "1:30PM to - 5:00PM",
+    location: "Auditorium 1, Academic Block 2",
+    type: "Tech Talk",
+    participants: 400,
+    prize: "Rupees 50  per participant",
+    Certificate: "Certificates will be provided to all the Participants",
+    description:
+      "Speaker - Mr. Hari Prasad R CEO and Founder, DeepinsigthsX Gen AI Strategist, LLM System Architect, Author Of 3 AI Books Berlin, Germany",
+    image: "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
+    status: "Registrations Opening Soon",
+    featured: true,
+    link: ""
+  },
+  {
+    id: 3,
+    title: "BOTH : Generative and Agentic AI Session + Workshop AND Event Season 1 - House Of Secrets + Season 2 - The Red File ",
+    date: "Sept 11th 2025, Thursday AND Sept 12th 2025, Thursday",
+    time: "1:30PM to - 5:00PM AND  10:00AM to - 5:00PM",
+    location: "Auditorium 1, Academic Block 2 AND Auditorium 1, Academic Block 1",
+    type: "Gaming",
+    participants: 400,
+    prize: "Rs 130   Per Participant,  Rs 650 per Full Team",
+    description:
+      "Speaker - Mr. Hari Prasad R CEO and Founder, DeepinsigthsX Gen AI Strategist, LLM System Architect, Author Of 3 AI Books Berlin, Germany AND Dive into the enigmatic world of 'House of Secrets' and 'Red File' at VIT Bhopal University. Unravel mysteries, solve puzzles, and embark on thrilling adventures in these immersive gaming experiences. Join us for a journey filled with suspense and excitement!",
+    image: "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
+    status: "Registrations Opening Soon",
+    featured: true,
+    link: ""
+  },
+  
+  
    
 
 ];
@@ -89,6 +91,9 @@ const pastEvents = [
 
 
 const Events = () => {
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   const [activeTab, setActiveTab] = useState("upcoming");
 
   const getEventTypeIcon = (type: string) => {
@@ -142,7 +147,7 @@ const Events = () => {
                 { number: "1+", label: "Events Hosted" },
                 { number: "500+", label: "Total Participants" },
                 { number: "₹10k+", label: "Prizes Won" },
-                { number: "10+", label: "Industry Speakers" },
+                { number: "4+", label: "Industry Speakers" },
               ].map((stat, i) => (
                 <div key={stat.label} className="gaming-container p-4 rounded-lg animate-slide-in-up" style={{ animationDelay: `${300 + i * 100}ms` }}>
                   <div className="text-3xl font-bold text-electric">{stat.number}</div>
