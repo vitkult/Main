@@ -198,13 +198,13 @@ const Hero = () => {
               description: "AI, Web Dev & Innovation",
             },
             {
-              number: "1+",
+              number: "4+",
               label: "Events Hosted",
               icon: Calendar,
               description: "Hackathons & Workshops",
             },
             {
-              number: "1+",
+              number: "0+",
               label: "Awards Won",
               icon: Trophy,
               description: "National & Regional Recognition",
