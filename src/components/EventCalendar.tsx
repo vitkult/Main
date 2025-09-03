@@ -196,7 +196,7 @@ const EventCalendar = () => {
           <Button
             variant="hologram"
             size="lg"
-            className="group px-8 py-4 rounded-full"
+            className="group px-8 py-4 rounded-full cursor-pointer"
             asChild
           >
             <Link to="/events">

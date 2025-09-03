@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Award } from "lucide-react";
@@ -6,6 +6,9 @@ import Navigation from "@/components/Navigation";
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 
 const Team = () => {
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   const [activeCategory, setActiveCategory] = useState("all");
 
  const teamMembers = [

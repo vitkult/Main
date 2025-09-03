@@ -18,8 +18,12 @@ import {
   Award,
   Handshake
 } from "lucide-react";
+import { useEffect } from "react";
 
 const Sponsor = () => {
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   // const sponsorshipTiers = [
   //   {
   //     name: "Title Sponsor",
@@ -94,7 +98,7 @@ const Sponsor = () => {
     { value: "100+", label: "Active Members", icon: Users },
     { value: "10K+", label: "Social Media Reach", icon: Eye },
     // { value: "95%", label: "Placement Rate", icon: TrendingUp },
-    { value: "50+", label: "Events Annually", icon: Target }
+    { value: "4+", label: "Events Annually", icon: Target }
   ];
 
   const partnershipBenefits = [

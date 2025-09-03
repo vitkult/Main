@@ -121,10 +121,10 @@ const Hero = () => {
           )}
 
           {animating && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black rounded-lg shadow-lg">
-          <CandleAnimation  />
-        </div>
-      )}
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black rounded-lg shadow-lg">
+              <CandleAnimation />
+            </div>
+          )}
 
           <h1 className="text-6xl md:text-8xl mt-32 mb-20 font-bold text-electric leading-tight">
             VIT<span className="text-cyber">KULT</span>
@@ -164,12 +164,18 @@ const Hero = () => {
             Join the Revolution
             <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
           </Button>
-          <Button variant="hologram" size="xl" className="group" asChild>
+          <Button
+            variant="hologram"
+            size="xl"
+            className="group cursor-pointer"
+            asChild
+          >
             <Link to="/events">
               <Gamepad2 className="h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
               Explore Events
             </Link>
           </Button>
+
           <Button
             variant="outline"
             size="xl"
@@ -198,7 +204,7 @@ const Hero = () => {
               description: "AI, Web Dev & Innovation",
             },
             {
-              number: "4+",
+              number: "1+",
               label: "Events Hosted",
               icon: Calendar,
               description: "Hackathons & Workshops",

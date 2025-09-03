@@ -68,7 +68,7 @@ const Index = () => {
     },
   ];
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <ParticleBackground />
       <Navigation />
       {/* Hero Section */}
@@ -314,7 +314,7 @@ const Index = () => {
                 <DialogDescription className="text-muted-foreground leading-relaxed">
                   To join our community, please send an email to{" "}
                   <span className="font-semibold text-foreground">
-                    vitkultclub@vitbhopal.ac.in
+                    vitkult@vitbhopal.ac.in
                   </span>{" "}
                   with your details and interests. Our team will get back to you
                   with further information.
@@ -326,7 +326,7 @@ const Index = () => {
                   <p className="text-sm text-muted-foreground">
                     Email:{" "}
                     <span className="font-semibold">
-                      vitkultclub@vitbhopal.ac.in
+                      vitkult@vitbhopal.ac.in
                     </span>
                   </p>
                 </div>
@@ -338,7 +338,7 @@ const Index = () => {
                   variant="gaming"
                   className="cursor-pointer hover:scale-[1.02] transition-all duration-300"
                   onClick={() => {
-                    window.location.href = "mailto:vitkultclub@vitbhopal.ac.in";
+                    window.location.href = "mailto:vitkult@vitbhopal.ac.in";
                     setIsJoinCommunityModalOpen(false);
                   }}
                 >

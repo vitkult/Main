@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -50,7 +50,7 @@ export const upcomingEvents = [
     description:
       "Speaker - Mr. Hari Prasad R CEO and Founder, DeepinsigthsX Gen AI Strategist, LLM System Architect, Author Of 3 AI Books Berlin, Germany",
     image: "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
-    status: "Registrations Open",
+    status: "Registrations Opening Soon",
     featured: true,
     link: ""
   },
@@ -66,7 +66,7 @@ export const upcomingEvents = [
     description:
       "Speaker - Mr. Hari Prasad R CEO and Founder, DeepinsigthsX Gen AI Strategist, LLM System Architect, Author Of 3 AI Books Berlin, Germany AND Dive into the enigmatic world of 'House of Secrets' and 'Red File' at VIT Bhopal University. Unravel mysteries, solve puzzles, and embark on thrilling adventures in these immersive gaming experiences. Join us for a journey filled with suspense and excitement!",
     image: "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
-    status: "Registrations Open",
+    status: "Registrations Opening Soon",
     featured: true,
     link: ""
   },
@@ -91,6 +91,9 @@ const pastEvents = [
 
 
 const Events = () => {
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   const [activeTab, setActiveTab] = useState("upcoming");
 
   const getEventTypeIcon = (type: string) => {
@@ -144,7 +147,7 @@ const Events = () => {
                 { number: "1+", label: "Events Hosted" },
                 { number: "500+", label: "Total Participants" },
                 { number: "₹10k+", label: "Prizes Won" },
-                { number: "10+", label: "Industry Speakers" },
+                { number: "4+", label: "Industry Speakers" },
               ].map((stat, i) => (
                 <div key={stat.label} className="gaming-container p-4 rounded-lg animate-slide-in-up" style={{ animationDelay: `${300 + i * 100}ms` }}>
                   <div className="text-3xl font-bold text-electric">{stat.number}</div>
