@@ -158,7 +158,7 @@ const EventCalendar = () => {
                       className="flex-1 group w-full cursor-pointer hover:scale-[1.01] hover:shadow-md hover:shadow-primary/20 transition-all duration-300 cursor-pointer"
                       asChild
                     >
-                      <Link to="/register">
+                      <Link to={event.link}>
                         Register Now
                         <ExternalLink className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                       </Link>
