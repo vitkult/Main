@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Calendar,
@@ -35,7 +41,7 @@ export const upcomingEvents = [
     image: "/poster1.jpg",
     status: "Registrations Open",
     featured: true,
-    link: "https://docs.google.com/forms/d/1v289vkG0wyyN0qnMAjabZesSGB0p6dk_RPeRw0wSIvA/edit?ts=68b7c273"
+    link: "https://docs.google.com/forms/d/1v289vkG0wyyN0qnMAjabZesSGB0p6dk_RPeRw0wSIvA/edit?ts=68b7c273",
   },
   {
     id: 2,
@@ -49,31 +55,31 @@ export const upcomingEvents = [
     Certificate: "Certificates will be provided to all the Participants",
     description:
       "Speaker - Mr. Hari Prasad R CEO and Founder, DeepinsigthsX Gen AI Strategist, LLM System Architect, Author Of 3 AI Books Berlin, Germany",
-    image: "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
+    image:
+      "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
     status: "Registrations Opening Soon",
     featured: true,
-    link: ""
+    link: "",
   },
   {
     id: 3,
-    title: "BOTH : Generative and Agentic AI Session + Workshop AND Event Season 1 - House Of Secrets + Season 2 - The Red File ",
+    title:
+      "BOTH : Generative and Agentic AI Session + Workshop AND Event Season 1 - House Of Secrets + Season 2 - The Red File ",
     date: "Sept 11th 2025, Thursday AND Sept 12th 2025, Thursday",
     time: "1:30PM to - 5:00PM AND  10:00AM to - 5:00PM",
-    location: "Auditorium 1, Academic Block 2 AND Auditorium 1, Academic Block 1",
+    location:
+      "Auditorium 1, Academic Block 2 AND Auditorium 1, Academic Block 1",
     type: "Gaming",
     participants: 400,
     prize: "Rs 130   Per Participant,  Rs 650 per Full Team",
     description:
       "Speaker - Mr. Hari Prasad R CEO and Founder, DeepinsigthsX Gen AI Strategist, LLM System Architect, Author Of 3 AI Books Berlin, Germany AND Dive into the enigmatic world of 'House of Secrets' and 'Red File' at VIT Bhopal University. Unravel mysteries, solve puzzles, and embark on thrilling adventures in these immersive gaming experiences. Join us for a journey filled with suspense and excitement!",
-    image: "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
+    image:
+      "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
     status: "Registrations Opening Soon",
     featured: true,
-    link: ""
+    link: "",
   },
-  
-  
-   
-
 ];
 
 const pastEvents = [
@@ -83,17 +89,16 @@ const pastEvents = [
     date: "2025-04-10",
     type: "Inauguration",
     participants: 400,
-    description: "The official launch event of VITKULT, celebrating code, creativity, and culture with esteemed guests and performances.",
+    description:
+      "The official launch event of VITKULT, celebrating code, creativity, and culture with esteemed guests and performances.",
     image: "https://i.postimg.cc/Hn45bBDY/udbhav.jpg",
   },
-  
 ];
-
 
 const Events = () => {
   useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+    window.scrollTo(0, 0);
+  }, []);
   const [activeTab, setActiveTab] = useState("upcoming");
 
   const getEventTypeIcon = (type: string) => {
@@ -139,19 +144,34 @@ const Events = () => {
             <h1 className="text-4xl md:text-6xl font-bold text-electric mb-4 animate-slide-in-up">
               Our <span className="text-cyber">Events</span>
             </h1>
-            <p className="max-w-3xl mx-auto text-lg text-muted-foreground mb-8 animate-fade-in" style={{ animationDelay: '100ms' }}>
-              Join our electrifying events that challenge your skills, expand your horizons, and connect you with the brightest minds.
+            <p
+              className="max-w-3xl mx-auto text-lg text-muted-foreground mb-8 animate-fade-in"
+              style={{ animationDelay: "100ms" }}
+            >
+              Join our electrifying events that challenge your skills, expand
+              your horizons, and connect you with the brightest minds.
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '200ms' }}>
+            <div
+              className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto animate-fade-in"
+              style={{ animationDelay: "200ms" }}
+            >
               {[
                 { number: "1+", label: "Events Hosted" },
                 { number: "500+", label: "Total Participants" },
                 { number: "₹10k+", label: "Prizes Won" },
                 { number: "4+", label: "Industry Speakers" },
               ].map((stat, i) => (
-                <div key={stat.label} className="gaming-container p-4 rounded-lg animate-slide-in-up" style={{ animationDelay: `${300 + i * 100}ms` }}>
-                  <div className="text-3xl font-bold text-electric">{stat.number}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div
+                  key={stat.label}
+                  className="gaming-container p-4 rounded-lg animate-slide-in-up"
+                  style={{ animationDelay: `${300 + i * 100}ms` }}
+                >
+                  <div className="text-3xl font-bold text-electric">
+                    {stat.number}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {stat.label}
+                  </div>
                 </div>
               ))}
             </div>
@@ -165,7 +185,9 @@ const Events = () => {
             <Button
               variant={activeTab === "upcoming" ? "gaming" : "ghost"}
               onClick={() => setActiveTab("upcoming")}
-              className={`w-40 transition-all duration-300 animate-bounce-in ${activeTab === "upcoming" ? 'shadow-electric' : ''}`}
+              className={`w-40 transition-all duration-300 animate-bounce-in ${
+                activeTab === "upcoming" ? "shadow-electric" : ""
+              }`}
             >
               <Calendar className="h-4 w-4 mr-2" />
               Upcoming
@@ -173,7 +195,9 @@ const Events = () => {
             <Button
               variant={activeTab === "past" ? "gaming" : "ghost"}
               onClick={() => setActiveTab("past")}
-              className={`w-40 transition-all duration-300 animate-bounce-in ${activeTab === "past" ? 'shadow-electric' : ''}`}
+              className={`w-40 transition-all duration-300 animate-bounce-in ${
+                activeTab === "past" ? "shadow-electric" : ""
+              }`}
             >
               <Award className="h-4 w-4 mr-2" />
               Past Events
@@ -202,10 +226,21 @@ const Events = () => {
   );
 };
 
-const UpcomingEventsSection = ({ events, getEventTypeColor, getEventTypeIcon, getStatusBadgeClass }: any) => (
+const UpcomingEventsSection = ({
+  events,
+  getEventTypeColor,
+  getEventTypeIcon,
+  getStatusBadgeClass,
+}: any) => (
   <div className="space-y-12">
     {events.map((event, i) => (
-      <Card key={event.id} className={`overflow-hidden card-glow transition-all duration-300 ${event.featured ? "ring-2 ring-primary" : ""} animate-slide-in-up`} style={{ animationDelay: `${i * 150}ms` }}>
+      <Card
+        key={event.id}
+        className={`overflow-hidden card-glow transition-all duration-300 ${
+          event.featured ? "ring-2 ring-primary" : ""
+        } animate-slide-in-up`}
+        style={{ animationDelay: `${i * 150}ms` }}
+      >
         <div className="grid grid-cols-1 md:grid-cols-12">
           {/* Image Column */}
           <div className="md:col-span-4 relative">
@@ -215,8 +250,10 @@ const UpcomingEventsSection = ({ events, getEventTypeColor, getEventTypeIcon, ge
               </Badge>
             )}
             <div
-              className={`absolute top-3 right-3 p-2 rounded-lg z-10 ${getEventTypeColor(event.type)} animate-fade-in`}
-              style={{ animationDelay: '100ms' }}
+              className={`absolute top-3 right-3 p-2 rounded-lg z-10 ${getEventTypeColor(
+                event.type
+              )} animate-fade-in`}
+              style={{ animationDelay: "100ms" }}
             >
               {getEventTypeIcon(event.type)}
             </div>
@@ -229,36 +266,79 @@ const UpcomingEventsSection = ({ events, getEventTypeColor, getEventTypeIcon, ge
           {/* Details Column */}
           <div className="md:col-span-8 flex flex-col">
             <CardHeader>
-              <div className="flex justify-between items-start gap-4">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                  <Badge variant="outline" className="mb-2 animate-fade-in" style={{ animationDelay: '200ms' }}>{event.type}</Badge>
-                  <CardTitle className="text-2xl font-bold animate-fade-in" style={{ animationDelay: '300ms' }}>{event.title}</CardTitle>
+                  <Badge
+                    variant="outline"
+                    className="mb-2 animate-fade-in"
+                    style={{ animationDelay: "200ms" }}
+                  >
+                    {event.type}
+                  </Badge>
+                  <CardTitle
+                    className="text-2xl font-bold animate-fade-in"
+                    style={{ animationDelay: "300ms" }}
+                  >
+                    {event.title}
+                  </CardTitle>
                 </div>
-                <Badge className={`whitespace-nowrap text-white ${getStatusBadgeClass(event.status)} animate-fade-in`} style={{ animationDelay: '400ms' }}>
+                <Badge
+                  className={`mt-2 sm:mt-0 whitespace-nowrap text-white ${getStatusBadgeClass(
+                    event.status
+                  )} animate-fade-in`}
+                  style={{ animationDelay: "400ms" }}
+                >
                   {event.status}
                 </Badge>
               </div>
             </CardHeader>
-            <CardContent className="flex-grow animate-fade-in" style={{ animationDelay: '500ms' }}>
-              <p className="text-muted-foreground mb-6 text-xs leading-[1.5]">{event.description}</p>
-              {
-                event.Certificate && (
-                  <div className="flex items-center gap-3 mb-4 text-sm text-accent font-semibold"><span>{event.Certificate}</span></div>
-                )
-              }
+            <CardContent
+              className="flex-grow animate-fade-in"
+              style={{ animationDelay: "500ms" }}
+            >
+              <p className="text-muted-foreground mb-6 text-sm leading-[1.5]">
+                {event.description}
+              </p>
+              {event.Certificate && (
+                <div className="flex items-center gap-3 mb-4 text-sm text-accent font-semibold">
+                  <span>{event.Certificate}</span>
+                </div>
+              )}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                <div className="flex items-center gap-3"><Calendar className="h-4 w-4 text-primary" /> <span>{event.date}</span></div>
-                <div className="flex items-center gap-3"><Clock className="h-4 w-4 text-primary" /> <span>{event.time}</span></div>
-                <div className="flex items-center gap-3"><MapPin className="h-4 w-4 text-primary" /> <span>{event.location}</span></div>
-                <div className="flex items-center gap-3"><Users className="h-4 w-4 text-primary" /> <span>{event.participants} Max Participants</span></div>
+                <div className="flex items-center gap-3">
+                  <Calendar className="h-4 w-4 text-primary" />{" "}
+                  <span>{event.date}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Clock className="h-4 w-4 text-primary" />{" "}
+                  <span>{event.time}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <MapPin className="h-4 w-4 text-primary" />{" "}
+                  <span>{event.location}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Users className="h-4 w-4 text-primary" />{" "}
+                  <span>{event.participants} Max Participants</span>
+                </div>
                 {event.prize && (
-                  <div className="flex items-center gap-3 sm:col-span-2"><Wallet className="h-4 w-4 text-accent" /> <span className="font-semibold text-accent">Registration Fees: {event.prize}</span></div>
+                  <div className="flex items-center gap-3 sm:col-span-2">
+                    <Wallet className="h-4 w-4 text-accent" />{" "}
+                    <span className="font-semibold text-accent">
+                      Registration Fees: {event.prize}
+                    </span>
+                  </div>
                 )}
               </div>
             </CardContent>
             <CardFooter>
               <div className="w-full flex flex-col sm:flex-row gap-3 mt-4">
-                <Button variant="gaming" size="lg" className="flex-1 animate-bounce-in cursor-pointer" asChild>
+                <Button
+                  variant="gaming"
+                  size="lg"
+                  className="flex-1 animate-bounce-in cursor-pointer scale-95 hover:scale-100"
+                  asChild
+                >
                   <Link to={event.link}>Register Now</Link>
                 </Button>
               </div>
@@ -270,15 +350,28 @@ const UpcomingEventsSection = ({ events, getEventTypeColor, getEventTypeIcon, ge
   </div>
 );
 
-const PastEventsSection = ({ events, getEventTypeColor, getEventTypeIcon }: any) => (
+const PastEventsSection = ({
+  events,
+  getEventTypeColor,
+  getEventTypeIcon,
+}: any) => (
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {events.map((event, i) => (
-      <Card key={event.id} className="card-hologram flex flex-col overflow-hidden animate-slide-in-up" style={{ animationDelay: `${i * 100}ms` }}>
+      <Card
+        key={event.id}
+        className="card-hologram flex flex-col overflow-hidden animate-slide-in-up"
+        style={{ animationDelay: `${i * 100}ms` }}
+      >
         <div className="relative">
           <Badge className="absolute top-3 left-3 bg-secondary text-secondary-foreground z-10 animate-bounce-in">
             Completed
           </Badge>
-          <div className={`absolute top-3 right-3 p-2 rounded-lg z-10 ${getEventTypeColor(event.type)} animate-fade-in`} style={{ animationDelay: '100ms' }}>
+          <div
+            className={`absolute top-3 right-3 p-2 rounded-lg z-10 ${getEventTypeColor(
+              event.type
+            )} animate-fade-in`}
+            style={{ animationDelay: "100ms" }}
+          >
             {getEventTypeIcon(event.type)}
           </div>
           <img
@@ -288,23 +381,52 @@ const PastEventsSection = ({ events, getEventTypeColor, getEventTypeIcon }: any)
           />
         </div>
         <CardHeader>
-          <Badge variant="outline" className="w-fit mb-2 animate-fade-in" style={{ animationDelay: '200ms' }}>{event.type}</Badge>
-          <CardTitle className="text-xl font-bold animate-fade-in" style={{ animationDelay: '300ms' }}>{event.title}</CardTitle>
+          <Badge
+            variant="outline"
+            className="w-fit mb-2 animate-fade-in"
+            style={{ animationDelay: "200ms" }}
+          >
+            {event.type}
+          </Badge>
+          <CardTitle
+            className="text-xl font-bold animate-fade-in"
+            style={{ animationDelay: "300ms" }}
+          >
+            {event.title}
+          </CardTitle>
         </CardHeader>
-        <CardContent className="flex-grow animate-fade-in" style={{ animationDelay: '400ms' }}>
-          <p className="text-muted-foreground text-sm mb-4">{event.description}</p>
+        <CardContent
+          className="flex-grow animate-fade-in"
+          style={{ animationDelay: "400ms" }}
+        >
+          <p className="text-muted-foreground text-sm mb-4">
+            {event.description}
+          </p>
           <div className="space-y-2 text-sm">
-            <div className="flex items-center gap-2 text-muted-foreground"><Calendar className="h-4 w-4" /> <span>{new Date(event.date).toLocaleDateString("en-IN", { year: 'numeric', month: 'long', day: 'numeric' })}</span></div>
-            <div className="flex items-center gap-2 text-muted-foreground"><Users className="h-4 w-4" /> <span>~{event.participants} participants</span></div>
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <Calendar className="h-4 w-4" />{" "}
+              <span>
+                {new Date(event.date).toLocaleDateString("en-IN", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </span>
+            </div>
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <Users className="h-4 w-4" />{" "}
+              <span>~{event.participants} participants</span>
+            </div>
           </div>
         </CardContent>
         <CardFooter>
-          <Button variant="outline" className="w-full animate-bounce-in">View Gallery</Button>
+          <Button variant="outline" className="w-full animate-bounce-in">
+            View Gallery
+          </Button>
         </CardFooter>
       </Card>
     ))}
   </div>
 );
-
 
 export default Events;
