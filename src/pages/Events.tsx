@@ -35,6 +35,7 @@ export const upcomingEvents = [
     image: "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
     status: "Registrations Open",
     featured: true,
+    link: ""
   },
   {
     id: 2,
@@ -51,6 +52,7 @@ export const upcomingEvents = [
     image: "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
     status: "Registrations Open",
     featured: true,
+    link: ""
   },
   {
     id: 3,
@@ -63,9 +65,10 @@ export const upcomingEvents = [
     prize: "Rs 80 Per Participant,  Rs 400 per Full Team (Team size 1-5)",
     description:
       "Dive into the enigmatic world of 'House of Secrets' and 'Red File' at VIT Bhopal University. Unravel mysteries, solve puzzles, and embark on thrilling adventures in these immersive gaming experiences. Join us for a journey filled with suspense and excitement!",
-    image: "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
+    image: "/poster1.jpg",
     status: "Registrations Open",
     featured: true,
+    link: "https://docs.google.com/forms/d/1v289vkG0wyyN0qnMAjabZesSGB0p6dk_RPeRw0wSIvA/edit?ts=68b7c273"
   },
    
 
@@ -251,7 +254,7 @@ const UpcomingEventsSection = ({ events, getEventTypeColor, getEventTypeIcon, ge
             <CardFooter>
               <div className="w-full flex flex-col sm:flex-row gap-3 mt-4">
                 <Button variant="gaming" size="lg" className="flex-1 animate-bounce-in cursor-pointer" asChild>
-                  <Link to="/register">Register Now</Link>
+                  <Link to={event.link}>Register Now</Link>
                 </Button>
               </div>
             </CardFooter>

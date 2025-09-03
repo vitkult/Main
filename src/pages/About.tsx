@@ -12,42 +12,59 @@ import {
   Gamepad2,
   Award,
   Calendar,
-  MapPin
+  MapPin,
+  Linkedin,
+  Instagram
 } from "lucide-react";
 
 const About = () => {
-  const milestones = [
-    {
-      year: "2025",
-      title: "Club Foundation",
-      description: "VITKULT was born with a vision to revolutionize tech culture at VIT Bhopal",
-      icon: Rocket
-    },
-    {
-      year: "2025",
-      title: "First Hackathon",
-      description: "Organized our inaugural hackathon with 200+ participants",
-      icon: Code
-    },
-    {
-      year: "2025",
-      title: "Gaming Division",
-      description: "Launched competitive gaming division with esports tournaments",
-      icon: Gamepad2
-    },
-    {
-      year: "2025",
-      title: "500+ Members",
-      description: "Crossed the milestone of 500 active community members",
-      icon: Users
-    },
-    {
-      year: "2025",
-      title: "Industry Recognition",
-      description: "Received awards for outstanding contribution to tech education",
-      icon: Award
-    }
-  ];
+  // const milestones = [
+  //   {
+  //     year: "2025",
+  //     title: "Club Foundation",
+  //     description: "VITKULT was born with a vision to revolutionize tech culture at VIT Bhopal",
+  //     icon: Rocket
+  //   },
+  //   {
+  //     year: "2025",
+  //     title: "First Hackathon",
+  //     description: "Organized our inaugural hackathon with 200+ participants",
+  //     icon: Code
+  //   },
+  //   {
+  //     year: "2025",
+  //     title: "Gaming Division",
+  //     description: "Launched competitive gaming division with esports tournaments",
+  //     icon: Gamepad2
+  //   },
+  //   {
+  //     year: "2025",
+  //     title: "500+ Members",
+  //     description: "Crossed the milestone of 500 active community members",
+  //     icon: Users
+  //   },
+  //   {
+  //     year: "2025",
+  //     title: "Industry Recognition",
+  //     description: "Received awards for outstanding contribution to tech education",
+  //     icon: Award
+  //   }
+  // ];
+
+  const socials = [
+      {
+        platform: "LinkedIn",
+        icon: Linkedin,
+        followers: "100+",
+        link: "https://in.linkedin.com/company/vitkult-vitb",
+      },
+      {
+        platform: "Instagram",
+        icon: Instagram,
+        followers: "200+",
+        link: "https://www.instagram.com/vitkult.vitb",
+      },
+    ];
 
   const values = [
     {
@@ -151,7 +168,7 @@ const About = () => {
       </section>
 
       {/* Timeline */}
-      <section className="py-20 px-4 relative bg-gradient-to-br from-background via-muted/40 to-background/80 overflow-hidden animate-fade-in">
+      {/* <section className="py-20 px-4 relative bg-gradient-to-br from-background via-muted/40 to-background/80 overflow-hidden animate-fade-in">
         <div className="absolute inset-0 pointer-events-none opacity-30 bg-[radial-gradient(circle_at_60%_20%,hsl(var(--primary-glow)),transparent_70%)]"></div>
         <div className="max-w-2xl mx-auto relative z-10">
           <div className="text-center mb-16">
@@ -163,7 +180,6 @@ const About = () => {
             </p>
           </div>
           <div className="relative flex flex-col items-center">
-            {/* Vertical Timeline Line */}
             <div className="absolute left-1/2 top-0 -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-secondary to-accent animate-shimmer rounded-full shadow-lg z-0"></div>
             {milestones.map((milestone, index) => {
               const Icon = milestone.icon;
@@ -173,11 +189,9 @@ const About = () => {
                   className="relative flex flex-col items-center w-full mb-16 animate-slide-in-up"
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
-                  {/* Icon in circle */}
                   <div className="z-10 bg-background rounded-full border-4 border-primary shadow-lg flex items-center justify-center w-20 h-20 mb-4 animate-bounce-in">
                     <Icon className="h-10 w-10 text-primary animate-fade-in" style={{ animationDelay: '200ms' }} />
                   </div>
-                  {/* Card */}
                   <div className="w-full sm:w-4/5 md:w-3/4 lg:w-2/3">
                     <Card className="card-hologram p-8 text-center group hover:scale-105 transition-transform duration-500 shadow-xl">
                       <div className="text-2xl font-bold text-primary mb-2 animate-fade-in" style={{ animationDelay: '100ms' }}>{milestone.year}</div>
@@ -190,7 +204,7 @@ const About = () => {
             })}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Stats Section */}
       <section className="py-16 px-4 bg-gradient-to-br from-background to-muted/20 animate-fade-in">
@@ -202,9 +216,9 @@ const About = () => {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: "500+", label: "Active Members", icon: Users },
+              { number: "100+", label: "Active Members", icon: Users },
               { number: "5+", label: "Projects Completed", icon: Code },
-              { number: "1+", label: "Events Hosted", icon: Calendar },
+              { number: "4+", label: "Events Hosted", icon: Calendar },
               { number: "0+", label: "Awards Won", icon: Trophy }
             ].map((stat, index) => {
               const Icon = stat.icon;
@@ -244,16 +258,31 @@ const About = () => {
                 <span className="text-muted-foreground">Meetings: Every Thursday 2 PM</span>
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-              <Button variant="gaming" size="lg" className="animate-bounce-in">
-                <Users className="h-5 w-5" />
-                Join VITKULT
-              </Button>
-              <Button variant="hologram" size="lg" className="animate-bounce-in" style={{ animationDelay: '100ms' }}>
-                <Calendar className="h-5 w-5" />
-                Attend Next Meeting
-              </Button>
-            </div>
+            <div className="flex justify-center space-x-6 mb-6">
+            {[
+              {
+                icon: Linkedin,
+                link: "https://in.linkedin.com/company/vitkult-vitb",
+              },
+              {
+                icon: Instagram,
+                link: "https://www.instagram.com/vitkult.vitb",
+              },
+            ].map((social, index) => {
+              const Icon = social.icon;
+              return (
+                <Button
+                  key={index}
+                  variant="ghost"
+                  size="icon"
+                  className="hover:text-primary animate-bounce-in"
+                  onClick={() => window.open(social.link, "_blank")}
+                >
+                  <Icon className="h-5 w-5" />
+                </Button>
+              );
+            })}
+          </div>
           </Card>
         </div>
       </section>

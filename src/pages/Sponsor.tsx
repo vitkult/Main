@@ -20,80 +20,80 @@ import {
 } from "lucide-react";
 
 const Sponsor = () => {
-  const sponsorshipTiers = [
-    {
-      name: "Title Sponsor",
-      icon: Crown,
-      price: "",
-      color: "accent",
-      featured: true,
-      benefits: [
-        "Naming rights to major events",
-        "Logo placement on all marketing materials",
-        "Dedicated booth space at events",
-        "Direct access to top talent for recruitment",
-        "Social media mentions across all platforms",
-        "Custom workshop hosting opportunities",
-        "Priority partnership for future events",
-        "Annual recognition ceremony"
-      ]
-    },
-    {
-      name: "Gold Sponsor",
-      icon: Star,
-      price: "",
-      color: "primary",
-      featured: false,
-      benefits: [
-        "Logo on event banners and merchandise",
-        "Booth space at 3 major events",
-        "Access to resume database",
-        "Social media promotion",
-        "Workshop hosting opportunity",
-        "Quarterly talent showcase",
-        "Brand mention in newsletters"
-      ]
-    },
-    {
-      name: "Silver Sponsor",
-      icon: Zap,
-      price: "",
-      color: "secondary",
-      featured: false,
-      benefits: [
-        "Logo on digital materials",
-        "Booth space at 2 events",
-        "Newsletter mentions",
-        "Social media shout-outs",
-        "Access to student projects",
-        "Recruitment announcements"
-      ]
-    },
-    {
-      name: "Event Sponsor",
-      icon: Heart,
-      price: "",
-      color: "success",
-      featured: false,
-      benefits: [
-        "Exclusive event branding",
-        "Opening ceremony mention",
-        "Logo on event merchandise",
-        "Social media coverage",
-        "Direct student interaction",
-        "Event photography rights"
-      ]
-    }
-  ];
+  // const sponsorshipTiers = [
+  //   {
+  //     name: "Title Sponsor",
+  //     icon: Crown,
+  //     price: "",
+  //     color: "accent",
+  //     featured: true,
+  //     benefits: [
+  //       "Naming rights to major events",
+  //       "Logo placement on all marketing materials",
+  //       "Dedicated booth space at events",
+  //       "Direct access to top talent for recruitment",
+  //       "Social media mentions across all platforms",
+  //       "Custom workshop hosting opportunities",
+  //       "Priority partnership for future events",
+  //       "Annual recognition ceremony"
+  //     ]
+  //   },
+  //   {
+  //     name: "Gold Sponsor",
+  //     icon: Star,
+  //     price: "",
+  //     color: "primary",
+  //     featured: false,
+  //     benefits: [
+  //       "Logo on event banners and merchandise",
+  //       "Booth space at 3 major events",
+  //       "Access to resume database",
+  //       "Social media promotion",
+  //       "Workshop hosting opportunity",
+  //       "Quarterly talent showcase",
+  //       "Brand mention in newsletters"
+  //     ]
+  //   },
+  //   {
+  //     name: "Silver Sponsor",
+  //     icon: Zap,
+  //     price: "",
+  //     color: "secondary",
+  //     featured: false,
+  //     benefits: [
+  //       "Logo on digital materials",
+  //       "Booth space at 2 events",
+  //       "Newsletter mentions",
+  //       "Social media shout-outs",
+  //       "Access to student projects",
+  //       "Recruitment announcements"
+  //     ]
+  //   },
+  //   {
+  //     name: "Event Sponsor",
+  //     icon: Heart,
+  //     price: "",
+  //     color: "success",
+  //     featured: false,
+  //     benefits: [
+  //       "Exclusive event branding",
+  //       "Opening ceremony mention",
+  //       "Logo on event merchandise",
+  //       "Social media coverage",
+  //       "Direct student interaction",
+  //       "Event photography rights"
+  //     ]
+  //   }
+  // ];
 
   const currentSponsors = [
     { name: "You Can Be The First One", logo: "/placeholder.svg", tier: "Sponsor", partnership: "" }
   ];
 
   const metrics = [
-    { value: "500+", label: "Active Members", icon: Users },
+    { value: "100+", label: "Active Members", icon: Users },
     { value: "10K+", label: "Social Media Reach", icon: Eye },
-    { value: "95%", label: "Placement Rate", icon: TrendingUp },
+    // { value: "95%", label: "Placement Rate", icon: TrendingUp },
     { value: "50+", label: "Events Annually", icon: Target }
   ];
 
@@ -183,7 +183,7 @@ const Sponsor = () => {
         </div>
       </section>
       {/* Sponsorship Tiers */}
-      <section className="py-20 px-4 animate-fade-in">
+      {/* <section className="py-20 px-4 animate-fade-in">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold text-electric mb-6 animate-fade-in">
@@ -236,7 +236,7 @@ const Sponsor = () => {
             })}
           </div>
         </div>
-      </section>
+      </section> */}
       {/* Current Sponsors */}
       <section className="py-16 px-4 bg-gradient-to-br from-background to-muted/20 animate-fade-in">
         <div className="max-w-6xl mx-auto">
@@ -280,11 +280,11 @@ const Sponsor = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 animate-fade-in">
               <div className="flex flex-col items-center space-y-2">
                 <Mail className="h-6 w-6 text-primary" />
-                <span className="text-muted-foreground">{import.meta.env.VITE_CONTACT_EMAIL}</span>
+                <span className="text-muted-foreground">vitkult@vitbhopal.ac.in</span>
               </div>
               <div className="flex flex-col items-center space-y-2">
                 <Phone className="h-6 w-6 text-primary" />
-                <span className="text-muted-foreground">+91 98765 43210</span>
+                <span className="text-muted-foreground">+91 78928 50922</span>
               </div>
               <div className="flex flex-col items-center space-y-2">
                 <Calendar className="h-6 w-6 text-primary" />
