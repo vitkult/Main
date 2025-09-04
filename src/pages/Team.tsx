@@ -155,15 +155,16 @@ const Team = () => {
     isFounder: true
   }, 
   {
-    id: 6,
-    name: "Kanak Garg",
-    role: "Event Management Co-Lead",
-    category: "event_and_design",
-    image: "https://www.dropbox.com/scl/fi/qe5l8u8a5v4mpa1raigbr/Screenshot-2025-07-21-153820.png?rlkey=nyasdc0mhd2m7i94d0dbtp431&st=txb1pjy2&raw=1",
-    bio: "Ensuring effective scheduling and smooth planning for all activities.",
-    skills: ["Scheduling", "Planning"],
-    isFounder: false
-  }, 
+      id: 9,
+      name: "Kanak Garg",
+      role: "Event Management Co-Lead",
+      category: "event_and_design",
+      image: "https://www.dropbox.com/scl/fi/qe5l8u8a5v4mpa1raigbr/Screenshot-2025-07-21-153820.png?rlkey=nyasdc0mhd2m7i94d0dbtp431&st=txb1pjy2&raw=1",
+      bio: "Ensuring effective scheduling and smooth planning for all activities.",
+      skills: ["Scheduling", "Planning"],
+      isFounder: false
+    },
+
   {
     id: 5,
     name: "Aswin Pillai",
@@ -304,6 +305,37 @@ const Team = () => {
     skills: ["Public Relations", "Partnerships"],
     isFounder: false
   },
+      {
+      id: 26,
+      name: "Krishnaveni TS",
+      role: "Human Resources Team",
+      category: "management",
+      image: "https://www.dropbox.com/scl/fi/7dw89h7i7ydhv53edc6wd/Screenshot-2025-09-04-204725.png?rlkey=xufd28vs4web5h9l9vp9sborb&st=ka84wy5n&raw=1",
+      bio: "Assisting in human resources activities and team coordination.",
+      skills: ["HR", "Recruitment"],
+      isFounder: false
+    },
+    {
+      id: 27,
+      name: "Raksha Vindhya",
+      role: "Human Resources Team",
+      category: "management",
+      image: "https://www.dropbox.com/scl/fi/rgz58g6ki22m4zp2cfbr3/Screenshot-2025-09-04-205606.png?rlkey=3j4fc1iwd6anwpj06cdnozgr0&st=igka5hzv&raw=1",
+      bio: "Managing human resources and employee engagement.",
+      skills: ["HR", "Employee Relations"],
+      isFounder: false
+    },
+    {
+      id: 28,
+      name: "Ganavi",
+      role: "Human Resources Team",
+      category: "management",
+      image: "https://www.dropbox.com/scl/fi/sz8dy6ergsdsdhv1wh8o0/Screenshot-2025-09-04-204951.png?rlkey=ykpncyknxu8lhiaw7vo4sqr1x&st=x4za19a8&raw=1",
+      bio: "Assisting in human resources functions and support.",
+      skills: ["HR", "Support"],
+      isFounder: false
+    },
+
 ];
 
   const categories = [
