@@ -91,7 +91,7 @@ const Team = () => {
     category: "technical",
     image: "https://www.dropbox.com/scl/fi/vgb6qr7lbq4nhz1a26btf/Screenshot-2025-09-01-194758.png?rlkey=8smdhmb1c9qn3v2reudlfporh&st=yl97z12c&raw=1",
     bio: "Assisting in managing the technical aspects and digital presence of our events.",
-    skills: ["Web Development", "Full-Stack"],
+    skills: ["Website Administrator", "Web Development", "Full-Stack"],
     isFounder: false
   },
   {
@@ -153,7 +153,17 @@ const Team = () => {
     bio: "Managing cultural events and fostering a vibrant community spirit.",
     skills: ["Event Planning", "Teamwork"],
     isFounder: true
-  },  
+  }, 
+  {
+    id: 6,
+    name: "Kanak Garg",
+    role: "Event Management Co-Lead",
+    category: "event_and_design",
+    image: "https://www.dropbox.com/scl/fi/qe5l8u8a5v4mpa1raigbr/Screenshot-2025-07-21-153820.png?rlkey=nyasdc0mhd2m7i94d0dbtp431&st=txb1pjy2&raw=1",
+    bio: "Ensuring effective scheduling and smooth planning for all activities.",
+    skills: ["Scheduling", "Planning"],
+    isFounder: false
+  }, 
   {
     id: 5,
     name: "Aswin Pillai",
@@ -161,16 +171,6 @@ const Team = () => {
     category: ["event_and_design", "management"],
     image: "https://www.dropbox.com/scl/fi/j597fjlb9bcea7inq4p7k/Screenshot-2025-09-01-183443.png?rlkey=dfb1phqvw7wleyuyoand4amu7&st=t3vddtfo&raw=1",
     bio: "Leading the scheduling and planning efforts to ensure a seamless flow of all events and activities.",
-    skills: ["Scheduling", "Planning"],
-    isFounder: false
-  },
-  {
-    id: 6,
-    name: "Kanak Garg",
-    role: "Scheduling and Planning Lead",
-    category: "event_and_design",
-    image: "https://www.dropbox.com/scl/fi/qe5l8u8a5v4mpa1raigbr/Screenshot-2025-07-21-153820.png?rlkey=nyasdc0mhd2m7i94d0dbtp431&st=txb1pjy2&raw=1",
-    bio: "Ensuring effective scheduling and smooth planning for all activities.",
     skills: ["Scheduling", "Planning"],
     isFounder: false
   },
