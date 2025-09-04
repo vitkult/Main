@@ -30,7 +30,7 @@ export const upcomingEvents = [
   {
     id: 1,
     title: "Event Season 1 - House Of Secrets + Season 2 - The Red File ",
-    date: "Sept 12th 2025, Thursday",
+    date: "Sept 12th 2025, Friday",
     time: "10:00AM to - 5:00PM",
     location: "Auditorium 1, Academic Block 1",
     type: "Gaming",
@@ -65,7 +65,7 @@ export const upcomingEvents = [
     id: 3,
     title:
       "BOTH : Generative and Agentic AI Session + Workshop AND Event Season 1 - House Of Secrets + Season 2 - The Red File ",
-    date: "Sept 11th 2025, Thursday AND Sept 12th 2025, Thursday",
+    date: "Sept 11th 2025, Thursday AND Sept 12th 2025, Friday",
     time: "1:30PM to - 5:00PM AND  10:00AM to - 5:00PM",
     location:
       "Auditorium 1, Academic Block 2 AND Auditorium 1, Academic Block 1",
