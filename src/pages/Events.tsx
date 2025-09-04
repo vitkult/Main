@@ -34,8 +34,8 @@ export const upcomingEvents = [
     time: "10:00AM to - 5:00PM",
     location: "Auditorium 1, Academic Block 1",
     type: "Gaming",
-    participants: 400,
-    prize: "Rs 80 Per Participant,  Rs 400 per Full Team (Team size 1-5)",
+    participants: 200,
+    prize: "Rs 100 Per Participant,  Rs 500 per Full Team (Team size 1-5)",
     description:
       "Dive into the enigmatic world of 'House of Secrets' and 'Red File' at VIT Bhopal University. Unravel mysteries, solve puzzles, and embark on thrilling adventures in these immersive gaming experiences. Join us for a journey filled with suspense and excitement!",
     image: "/poster1.jpg",
