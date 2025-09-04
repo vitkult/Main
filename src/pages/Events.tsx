@@ -35,7 +35,7 @@ export const upcomingEvents = [
     location: "Auditorium 1, Academic Block 1",
     type: "Gaming",
     participants: 200,
-    prize: "Rs 100 Per Participant,  Rs 500 per Full Team (Team size 1-5)",
+    prize: "Rs 80 Per Participant,  Rs 400 per Full Team (Team size 1-5)",
     description:
       "Dive into the enigmatic world of 'House of Secrets' and 'Red File' at VIT Bhopal University. Unravel mysteries, solve puzzles, and embark on thrilling adventures in these immersive gaming experiences. Join us for a journey filled with suspense and excitement!",
     image: "/poster1.jpg",
@@ -50,13 +50,14 @@ export const upcomingEvents = [
     time: "1:30PM to - 5:00PM",
     location: "Auditorium 1, Academic Block 2",
     type: "Tech Talk",
-    participants: 400,
+    hybrid: true,
+    participants: "400",
     prize: "Rupees 50  per participant",
     Certificate: "Certificates will be provided to all the Participants",
     description:
-      "Speaker - Mr. Hari Prasad R CEO and Founder, DeepinsigthsX Gen AI Strategist, LLM System Architect, Author Of 3 AI Books Berlin, Germany",
+      "Speaker - Mr. Indranil Doss, a Senior Software Engineer (SDE-3) at Apollo.io in the AI Apps team and a post-graduate in Computer Science from IIT Dhanbad. With nearly a decade of industry experience across Apollo.io, Adobe, Myntra, InMobi he specializes in building scalable systems and applied AI solutions, with a focus on integrating generative AI into real-world products",
     image:
-      "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
+      "/posterTech.png",
     status: "Registrations Opening Soon",
     featured: true,
     link: "",
@@ -319,7 +320,8 @@ const UpcomingEventsSection = ({
                 </div>
                 <div className="flex items-center gap-3">
                   <Users className="h-4 w-4 text-primary" />{" "}
-                  <span>{event.participants} Max Participants</span>
+                  {event.hybrid && <span>Hybrid mode – first 240 seats are offline, rest will be online. </span>}
+                  {!event.hybrid && <span>{event.participants} Max Participants</span>}
                 </div>
                 {event.prize && (
                   <div className="flex items-center gap-3 sm:col-span-2">
