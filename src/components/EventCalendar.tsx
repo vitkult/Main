@@ -145,7 +145,15 @@ const EventCalendar = () => {
                     </div>
                     <div className="flex items-center gap-3 text-muted-foreground">
                       <Users className="h-5 w-5 text-primary flex-shrink-0" />
-                      <span>{event.participants} participants expected</span>
+                      {event.hybrid && (
+                        <span>
+                          Hybrid mode – first 240 seats are offline, rest will
+                          be online.{" "}
+                        </span>
+                      )}
+                      {!event.hybrid && (
+                        <span>{event.participants} participants expected</span>
+                      )}
                     </div>
                   </div>
 
