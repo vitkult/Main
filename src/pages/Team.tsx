@@ -146,7 +146,7 @@ const Team = () => {
   },
   {
     id: 4,
-    name: "Shashank Shalimath",
+    name: "Shashank Salimath",
     role: "Event Management Lead",
     category: ["founders", "event_and_design"],
     image: "https://www.dropbox.com/scl/fi/cyuyutpokd4k3pkyr3uys/Screenshot-2025-08-11-192851.png?rlkey=5m87i5l1ufml763iokbtn4k1s&st=kml6o300&raw=1",
