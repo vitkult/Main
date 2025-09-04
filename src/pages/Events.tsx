@@ -74,7 +74,7 @@ export const upcomingEvents = [
     participants: 400,
     prize: "Rs 130   Per Participant,  Rs 650 per Full Team",
     description:
-      "Speaker - Mr. Hari Prasad R CEO and Founder, DeepinsigthsX Gen AI Strategist, LLM System Architect, Author Of 3 AI Books Berlin, Germany AND Dive into the enigmatic world of 'House of Secrets' and 'Red File' at VIT Bhopal University. Unravel mysteries, solve puzzles, and embark on thrilling adventures in these immersive gaming experiences. Join us for a journey filled with suspense and excitement!",
+      "Speaker - Mr. Indranil Doss, a Senior Software Engineer (SDE-3) at Apollo.io in the AI Apps team and a post-graduate in Computer Science from IIT Dhanbad. With nearly a decade of industry experience across Apollo.io, Adobe, Myntra, InMobi he specializes in building scalable systems and applied AI solutions, with a focus on integrating generative AI into real-world products AND Dive into the enigmatic world of 'House of Secrets' and 'Red File' at VIT Bhopal University. Unravel mysteries, solve puzzles, and embark on thrilling adventures in these immersive gaming experiences. Join us for a journey filled with suspense and excitement!",
     image:
       "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
     status: "Registrations Opening Soon",
