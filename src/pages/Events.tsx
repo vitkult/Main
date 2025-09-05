@@ -76,7 +76,7 @@ export const upcomingEvents = [
       "This setup will be enough for everyone to follow along smoothly. In the session, we’ll be building simple AI agents step by step."
   },
     image:
-      "/posterTech.png",
+      "/posterTech.jpg",
     status: "Registrations Open",
     featured: true,
     link: "https://forms.gle/jvwZXkAR1Qid1mfY9",
@@ -261,7 +261,7 @@ const UpcomingEventsSection = ({
             <img
               src={event.image}
               alt={event.title}
-              className="w-full h-60 md:h-full object-cover rounded-lg shadow-lg"
+              className="!w-full h-60 md:h-full object-contain rounded-lg shadow-lg"
             />
           </div>
           {/* Details Column */}
