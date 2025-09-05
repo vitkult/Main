@@ -38,6 +38,8 @@ export const upcomingEvents = [
     prize: "Rs 80 Per Participant,  Rs 400 per Full Team (Team size 1-5)",
     description:
       "Dive into the enigmatic world of 'House of Secrets' and 'Red File' at VIT Bhopal University. Unravel mysteries, solve puzzles, and embark on thrilling adventures in these immersive gaming experiences. Join us for a journey filled with suspense and excitement!",
+    requirements: {},
+    hybrid: false,
     image: "/poster1.jpg",
     status: "Registrations Open",
     featured: true,
@@ -47,39 +49,37 @@ export const upcomingEvents = [
     id: 2,
     title: "Generative and Agentic AI Session + Workshop",
     date: "Sept 11th 2025, Thursday",
-    time: "1:30PM to - 5:00PM",
+    time: "1:30PM to - 4:30PM",
     location: "Auditorium 1, Academic Block 2",
     type: "Tech Talk",
     hybrid: true,
     participants: "400",
-    prize: "Rupees 50  per participant",
+    prize: "Rupees 45  per participant",
     Certificate: "Certificates will be provided to all the Participants",
     description:
       "Speaker - Mr. Indranil Doss, a Senior Software Engineer (SDE-3) at Apollo.io in the AI Apps team and a post-graduate in Computer Science from IIT Dhanbad. With nearly a decade of industry experience across Apollo.io, Adobe, Myntra, InMobi he specializes in building scalable systems and applied AI solutions, with a focus on integrating generative AI into real-world products",
+    requirements: {
+    mandatory: [
+      "Laptop/desktop with a modern browser (Chrome preferred)",
+      "Stable internet connection",
+      "Access to n8n (either an n8n.cloud free account or local install — local install preferred)",
+      "cURL (via terminal) or Postman installed (both are recommended, but at least one is required — preferably cURL via terminal)"
+    ],
+    goodToHave: [
+      "OpenAI or other LLM API keys (for those who want to experiment further)",
+      "Airtable/Notion/Google Sheets accounts (if students want to try logging or extensions)"
+    ],
+    notNeeded: [
+      "Any heavy installs (databases, vector DBs, or paid cloud services)"
+    ],
+    note:
+      "This setup will be enough for everyone to follow along smoothly. In the session, we’ll be building simple AI agents step by step."
+  },
     image:
       "/posterTech.png",
-    status: "Registrations Opening Soon",
+    status: "Registrations Open",
     featured: true,
-    link: "",
-  },
-  {
-    id: 3,
-    title:
-      "BOTH : Generative and Agentic AI Session + Workshop AND Event Season 1 - House Of Secrets + Season 2 - The Red File ",
-    date: "Sept 11th 2025, Thursday AND Sept 12th 2025, Friday",
-    time: "1:30PM to - 5:00PM AND  10:00AM to - 5:00PM",
-    location:
-      "Auditorium 1, Academic Block 2 AND Auditorium 1, Academic Block 1",
-    type: "Gaming",
-    participants: 400,
-    prize: "Rs 130   Per Participant,  Rs 650 per Full Team",
-    description:
-      "Speaker - Mr. Indranil Doss, a Senior Software Engineer (SDE-3) at Apollo.io in the AI Apps team and a post-graduate in Computer Science from IIT Dhanbad. With nearly a decade of industry experience across Apollo.io, Adobe, Myntra, InMobi he specializes in building scalable systems and applied AI solutions, with a focus on integrating generative AI into real-world products AND Dive into the enigmatic world of 'House of Secrets' and 'Red File' at VIT Bhopal University. Unravel mysteries, solve puzzles, and embark on thrilling adventures in these immersive gaming experiences. Join us for a journey filled with suspense and excitement!",
-    image:
-      "https://eco-cdn.iqpc.com/eco/images/channel_content/images/ai-generated_images_comic_strip_in_blue_modern_styleruOsIIcWQV26K4grrs4kG4RLXQ3zj6fX5aeZucLh.webp", // Replace with a real image URL
-    status: "Registrations Opening Soon",
-    featured: true,
-    link: "",
+    link: "https://forms.gle/jvwZXkAR1Qid1mfY9",
   },
 ];
 
@@ -305,6 +305,50 @@ const UpcomingEventsSection = ({
                   <span>{event.Certificate}</span>
                 </div>
               )}
+              {event.requirements && Object.keys(event.requirements).length > 0 && (
+          <div className="mb-6">
+            <h4 className="font-semibold text-primary mb-2">Requirements</h4>
+
+            {event.requirements.mandatory?.length > 0 && (
+              <div className="mb-3">
+                <p className="font-medium text-sm">Mandatory:</p>
+                <ul className="list-disc pl-5 text-muted-foreground text-sm space-y-1">
+                  {event.requirements.mandatory.map((req, idx) => (
+                    <li key={idx}>{req}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {event.requirements.goodToHave?.length > 0 && (
+              <div className="mb-3">
+                <p className="font-medium text-sm">Good to Have:</p>
+                <ul className="list-disc pl-5 text-muted-foreground text-sm space-y-1">
+                  {event.requirements.goodToHave.map((req, idx) => (
+                    <li key={idx}>{req}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {event.requirements.notNeeded?.length > 0 && (
+              <div className="mb-3">
+                <p className="font-medium text-sm">Not Needed:</p>
+                <ul className="list-disc pl-5 text-muted-foreground text-sm space-y-1">
+                  {event.requirements.notNeeded.map((req, idx) => (
+                    <li key={idx}>{req}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {event.requirements.note && (
+              <p className="text-xs text-muted-foreground italic">
+                {event.requirements.note}
+              </p>
+            )}
+          </div>
+        )}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                 <div className="flex items-center gap-3">
                   <Calendar className="h-4 w-4 text-primary" />{" "}
@@ -320,7 +364,7 @@ const UpcomingEventsSection = ({
                 </div>
                 <div className="flex items-center gap-3">
                   <Users className="h-4 w-4 text-primary" />{" "}
-                  {event.hybrid && <span>Hybrid mode – first 240 seats are offline, rest will be online. </span>}
+                  {event.hybrid && <span>Hybrid mode</span>}
                   {!event.hybrid && <span>{event.participants} Max Participants</span>}
                 </div>
                 {event.prize && (
