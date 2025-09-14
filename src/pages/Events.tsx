@@ -27,63 +27,83 @@ import { Link } from "react-router-dom";
 import { Certificate } from "crypto";
 
 export const upcomingEvents = [
+  // {
+  //   id: 1,
+  //   title: "Event Season 1 - House Of Secrets + Season 2 - The Red File ",
+  //   date: "Sept 12th 2025, Friday",
+  //   time: "10:00AM to - 5:00PM",
+  //   location: "Auditorium 1, Academic Block 1",
+  //   type: "Gaming",
+  //   participants: 200,
+  //   prize: "Rs 80 Per Participant,  Rs 400 per Full Team (Team size 1-5)",
+  //   description:
+  //     "Dive into the enigmatic world of 'House of Secrets' and 'Red File' at VIT Bhopal University. Unravel mysteries, solve puzzles, and embark on thrilling adventures in these immersive gaming experiences. Join us for a journey filled with suspense and excitement!",
+  //   requirements: {},
+  //   hybrid: false,
+  //   image: "/poster1.jpg",
+  //   status: "Registrations Open",
+  //   featured: true,
+  //   link: "https://docs.google.com/forms/d/1v289vkG0wyyN0qnMAjabZesSGB0p6dk_RPeRw0wSIvA/edit?ts=68b7c273",
+  // },
+  // {
+  //   id: 2,
+  //   title: "Generative and Agentic AI Session + Workshop",
+  //   date: "Sept 11th 2025, Thursday",
+  //   time: "1:30PM to - 4:30PM",
+  //   location: "Auditorium 1, Academic Block 2",
+  //   type: "Tech Talk",
+  //   hybrid: true,
+  //   participants: "400",
+  //   prize: "Rupees 45  per participant",
+  //   Certificate: "Certificates will be provided to all the Participants",
+  //   description:
+  //     "Speaker - Mr. Indranil Doss, a Senior Software Engineer (SDE-3) at Apollo.io in the AI Apps team and a post-graduate in Computer Science from IIT Dhanbad. With nearly a decade of industry experience across Apollo.io, Adobe, Myntra, InMobi he specializes in building scalable systems and applied AI solutions, with a focus on integrating generative AI into real-world products",
+  //   requirements: {
+  //   mandatory: [
+  //     "Laptop/desktop with a modern browser (Chrome preferred)",
+  //     "Stable internet connection",
+  //     "Access to n8n (either an n8n.cloud free account or local install — local install preferred)",
+  //     "cURL (via terminal) or Postman installed (both are recommended, but at least one is required — preferably cURL via terminal)"
+  //   ],
+  //   goodToHave: [
+  //     "OpenAI or other LLM API keys (for those who want to experiment further)",
+  //     "Airtable/Notion/Google Sheets accounts (if students want to try logging or extensions)"
+  //   ],
+  //   notNeeded: [
+  //     "Any heavy installs (databases, vector DBs, or paid cloud services)"
+  //   ],
+  //   note:
+  //     "This setup will be enough for everyone to follow along smoothly. In the session, we’ll be building simple AI agents step by step."
+  // },
+  //   image:
+  //     "/posterTech.jpg",
+  //   status: "Registrations Open",
+  //   featured: true,
+  //   link: "https://forms.gle/jvwZXkAR1Qid1mfY9",
+  // },
+];
+
+const pastEvents = [
   {
     id: 1,
     title: "Event Season 1 - House Of Secrets + Season 2 - The Red File ",
     date: "Sept 12th 2025, Friday",
-    time: "10:00AM to - 5:00PM",
-    location: "Auditorium 1, Academic Block 1",
     type: "Gaming",
     participants: 200,
-    prize: "Rs 80 Per Participant,  Rs 400 per Full Team (Team size 1-5)",
     description:
       "Dive into the enigmatic world of 'House of Secrets' and 'Red File' at VIT Bhopal University. Unravel mysteries, solve puzzles, and embark on thrilling adventures in these immersive gaming experiences. Join us for a journey filled with suspense and excitement!",
-    requirements: {},
-    hybrid: false,
     image: "/poster1.jpg",
-    status: "Registrations Open",
-    featured: true,
-    link: "https://docs.google.com/forms/d/1v289vkG0wyyN0qnMAjabZesSGB0p6dk_RPeRw0wSIvA/edit?ts=68b7c273",
   },
   {
     id: 2,
     title: "Generative and Agentic AI Session + Workshop",
     date: "Sept 11th 2025, Thursday",
-    time: "1:30PM to - 4:30PM",
-    location: "Auditorium 1, Academic Block 2",
     type: "Tech Talk",
-    hybrid: true,
     participants: "400",
-    prize: "Rupees 45  per participant",
-    Certificate: "Certificates will be provided to all the Participants",
     description:
       "Speaker - Mr. Indranil Doss, a Senior Software Engineer (SDE-3) at Apollo.io in the AI Apps team and a post-graduate in Computer Science from IIT Dhanbad. With nearly a decade of industry experience across Apollo.io, Adobe, Myntra, InMobi he specializes in building scalable systems and applied AI solutions, with a focus on integrating generative AI into real-world products",
-    requirements: {
-    mandatory: [
-      "Laptop/desktop with a modern browser (Chrome preferred)",
-      "Stable internet connection",
-      "Access to n8n (either an n8n.cloud free account or local install — local install preferred)",
-      "cURL (via terminal) or Postman installed (both are recommended, but at least one is required — preferably cURL via terminal)"
-    ],
-    goodToHave: [
-      "OpenAI or other LLM API keys (for those who want to experiment further)",
-      "Airtable/Notion/Google Sheets accounts (if students want to try logging or extensions)"
-    ],
-    notNeeded: [
-      "Any heavy installs (databases, vector DBs, or paid cloud services)"
-    ],
-    note:
-      "This setup will be enough for everyone to follow along smoothly. In the session, we’ll be building simple AI agents step by step."
+    image:"/posterTech.jpg",
   },
-    image:
-      "/posterTech.jpg",
-    status: "Registrations Open",
-    featured: true,
-    link: "https://forms.gle/jvwZXkAR1Qid1mfY9",
-  },
-];
-
-const pastEvents = [
   {
     id: 4,
     title: "Udbhav: The Grand Inauguration",
